@@ -1,0 +1,139 @@
+body {
+	margin:0;
+	font-family:'Lato', sans-serif;
+	text-align:center;
+	color: #999;
+	overflow: hidden;
+}
+
+a, a:visited {
+	text-decoration:none;
+}
+
+#page-wrapper{
+	height: 100vh;
+	width: 150%;
+	transform: translateX(-33.33%);
+	font-size: 0;
+	letter-spacing: 0;
+	background-color: #e8e8e8;
+	position: relative;
+	padding-right: 100px;
+	box-sizing:border-box;
+}
+
+#item-wrapper{
+	height: 100%;
+	width: 33.33%;
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+}
+
+#main-wrapper{
+	height: 100%;
+	width: 66.66%;
+	display: inline-block;
+	font-size: 0;
+	letter-spacing: 0;
+	position: relative;
+	vertical-align: top;
+}
+
+#deisgn-area{
+	height: 100%;
+	width: 75%;
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	background-image: url(/images/design_area.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#editing-menu{
+	height: 100%;
+	width: 25%;
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	padding: 10px;
+	box-sizing:border-box;
+}
+
+#color-selection-menu{
+	height: 60%;
+	width: 100%;
+	position: relative;
+	top: 10%;
+}
+
+#selection-menu-icons{
+	width: 100%;
+	position: relative;
+	font-size: 0;
+	letter-spacing: 0;
+	text-align: left;
+}
+
+.color-tab-icon{
+	height: 40px;
+	width: 40px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#tshirt-color-tab{
+	background-image: url(/images/tshirt_icon.png);
+}
+
+#design-color-tab{
+	background-image: url(/images/design_icon.png);
+	margin-left: 10px;
+}
+
+.color-selection-row{
+	width: 100%;
+	position: relative;
+	font-size: 0;
+	letter-spacing: 0;
+	margin-top: 20px;
+}
+
+.color-block{
+	height: 30px;
+	width: 20%;
+	display: inline-block;
+	position: relative;
+	background-color: #ccc;
+	box-sizing: border-box;
+}
+
+.color-block-margin{
+	border-left: 4px solid #e8e8e8;
+}
+
+.sample-designs-row{
+	width: 100%;
+	position: relative;
+	font-size: 0;
+	letter-spacing: 0;
+	text-align: left;
+}
+
+.sample-design{
+	height: 250px;
+	width: 50%;
+	display: inline-block;
+	background-color: #ddd;
+	box-sizing: border-box;
+	border-top: 4px solid #e8e8e8;
+}
+
+.sample-design-margin{
+	border-left: 4px solid #e8e8e8;
+}
