@@ -8,7 +8,12 @@ var colors = {'t-blue':'#039ddd',
 			't-white':'#eeeeee',
 			't-darkblue':'#103684',
 			't-pink':'#ca34d3'
-		};
+			};
+
+var currentTColor = '#039ddd';
+var currentLogoColor = '#eeeeee';
+var currentActive = 'tshirt';
+var currentArtwork;
 
 // canvas variables
 var designCanvas = document.getElementById('design-canvas');
@@ -16,13 +21,32 @@ var designContext = designCanvas.getContext("2d");
 var design_bg;
 var design_area;
 
+var artworkCanvas = document.createElement('canvas');
+var artworkCtx = artworkCanvas.getContext('2d');
+
+var colorCanvas = document.createElement('canvas');
+var colorCtx = colorCanvas.getContext('2d');
+
 $( document ).ready(function(){
 	genarateColorBoxes();
 	initDesignCanvas();
+	
+	$('#tshirt-color-tab').click(function(){
+		currentActive = 'tshirt';
+	});
+
+	$('#design-color-tab').click(function(){
+		currentActive = 'artwork';
+	});
 
 	$(document).on('click','.color-block', function(e){
 		var color = e.target.id;
-		addTshirt(colors[color]);
+		if (currentActive == 'tshirt') {
+			addTshirt(colors[color]);
+		}else{
+			currentLogoColor = colors[color];
+			addArtwok(currentArtwork);
+		};
 	});
 
 	$(document).on('click','.sample-design', function(e){
@@ -68,7 +92,7 @@ function initDesignCanvas(){
 
 	loader.addCompletionListener(function() { 
 		drawImage(design_bg, designCanvas, designContext);
-		drawImage(design_area, designCanvas, designContext);
+		addTshirt(currentTColor);
 
 		var loader = new PxLoader();
 		for (var i = 0; i < artworks.length; i++) {
@@ -84,6 +108,7 @@ function initDesignCanvas(){
 	});
 
 	loader.start();
+
 }
 
 function drawImage(image, canvas, ctx, opacity){
@@ -103,6 +128,7 @@ function drawImage(image, canvas, ctx, opacity){
 }
 
 function addTshirt(color){
+	currentTColor = color;
 	colorCanvas = document.createElement('canvas');
 	colorCtx = colorCanvas.getContext('2d');
 
@@ -146,9 +172,15 @@ function colorTransition(image, canvas, ctx, opacity){
 	window.requestAnimationFrame(function(){
 		drawImage(image, canvas, ctx, opacity);
 		drawImage(artworkCanvas, canvas, ctx);
+		drawImage(design_bg, designCanvas, designContext);
 		opacity += 0.05;
 		if(opacity <= 1){
 			colorTransition(image, canvas, ctx, opacity);
+		}else{
+			designContext.clearRect(0, 0, designCanvas.width, designCanvas.height);
+			drawImage(image, canvas, ctx, 1);
+			drawImage(artworkCanvas, canvas, ctx);
+			drawImage(design_bg, designCanvas, designContext);
 		}
 	});
 }
@@ -201,9 +233,13 @@ function generateArtworks(){
 // add artwork to canvas
 
 function addArtwok(artwork){
+	currentArtwork = artwork;
+	if (currentArtwork == undefined) {
+		return;
+	};
 	artworkCanvas = document.createElement('canvas');
 	artworkCtx = artworkCanvas.getContext('2d');
-
+	artworkCtx.clearRect(0,0,artworkCanvas.width,artworkCanvas.height);
 	artworkCanvas.width = designCanvas.width;
 	artworkCanvas.height = designCanvas.height;
 
@@ -215,9 +251,17 @@ function addArtwok(artwork){
 	var x_pos = (artworkCanvas.width-image_width)/2;
 	var y_pos = artworkCanvas.height/7;
 
-
+	artworkCtx.fillStyle = currentLogoColor;
+	artworkCtx.fillRect(0, 0, artworkCanvas.width, artworkCanvas.height);
+	artworkCtx.globalCompositeOperation = 'destination-in';
 	artworkCtx.drawImage(artwork_object, x_pos, y_pos, image_width, image_height);
 
-	drawImage(artworkCanvas, designCanvas, designContext);
+	refreshDesignCanvas();
+}
 
+function refreshDesignCanvas(){
+	designContext.clearRect(0, 0, designCanvas.width, designCanvas.height);
+	drawImage(colorCanvas, designCanvas, designContext);
+	drawImage(artworkCanvas, designCanvas, designContext);
+	drawImage(design_bg, designCanvas, designContext);
 }
