@@ -99,11 +99,11 @@ a, a:visited {
 }
 
 #tshirt-color-tab{
-	background-image: url(images/tshirt_icon.png);
+	background-image: url(../images/tshirt_icon.png);
 }
 
 #design-color-tab{
-	background-image: url(images/design_icon.png);
+	background-image: url(../images/design_icon.png);
 	margin-left: 10px;
 }
 
@@ -207,11 +207,11 @@ a, a:visited {
 }
 
 #fb-icon{
-	background-image: url(images/fb_icon.png);
+	background-image: url(../images/fb_icon.png);
 }
 
 #twitter-icon{
-	background-image: url(images/twitter_icon.png);
+	background-image: url(../images/twitter_icon.png);
 }
 
 #copyrights{
