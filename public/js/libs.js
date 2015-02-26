@@ -54,7 +54,7 @@ $( document ).ready(function(){
 		addArtwok(artwork);
 	});
 
-	generateArtworks();
+	
 });
 
 // function for color boxes
@@ -100,7 +100,7 @@ function initDesignCanvas(){
 		};
 
 		loader.addCompletionListener(function(){
-
+			generateArtworks();
 		});
 
 		loader.start();
