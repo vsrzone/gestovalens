@@ -2,7 +2,7 @@ body {
 	margin:0;
 	font-family:'Lato', sans-serif;
 	text-align:center;
-	color: #999;
+	color: #616161;
 	overflow: hidden;
 }
 
@@ -46,10 +46,15 @@ a, a:visited {
 	display: inline-block;
 	position: relative;
 	vertical-align: top;
-	background-image: url(/images/design_area.png);
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+#design-canvas{
+	height: 100%;
+	width: 100%;
+	position: relative;
 }
 
 #editing-menu{
@@ -62,11 +67,16 @@ a, a:visited {
 	box-sizing:border-box;
 }
 
+#editing-fixed{
+	height: auto;
+	width: 450px;
+	position: relative;
+	right: 0;
+}
+
 #color-selection-menu{
-	height: 60%;
 	width: 100%;
 	position: relative;
-	top: 10%;
 }
 
 #selection-menu-icons{
@@ -101,7 +111,8 @@ a, a:visited {
 	position: relative;
 	font-size: 0;
 	letter-spacing: 0;
-	margin-top: 20px;
+	border-top: 4px solid #e8e8e8;
+	text-align: left;
 }
 
 .color-block{
@@ -111,11 +122,17 @@ a, a:visited {
 	position: relative;
 	background-color: #ccc;
 	box-sizing: border-box;
+	border-left: 4px solid #e8e8e8;
+	opacity: 0.4;
+	transition: opacity 0.3s ease-in-out;
 }
 
-.color-block-margin{
-	border-left: 4px solid #e8e8e8;
+.color-block:hover{
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+	cursor: pointer;
 }
+
 
 .sample-designs-row{
 	width: 100%;
@@ -132,8 +149,73 @@ a, a:visited {
 	background-color: #ddd;
 	box-sizing: border-box;
 	border-top: 4px solid #e8e8e8;
+	border-left: 4px solid #e8e8e8;
+	padding: 15px;
 }
 
-.sample-design-margin{
-	border-left: 4px solid #e8e8e8;
+.sample-design:hover .artwork-wrapper{
+	opacity: 1;
+	transform: scale(1.1);
+	transition: opacity 0.3s ease-in-out;
+	transition: transform 0.5s ease-in-out;
+	cursor: pointer;
+}
+
+.artwork-wrapper{
+	height: 100%;
+	width: 100%;
+	position: relative;
+	background-size: contain;
+	background-repeat: no-repeat;
+	opacity: 0.4;
+	transition: opacity 0.3s ease-in-out;
+	transition: transform 0.5s ease-in-out;
+}
+
+#more-designs{
+	height: auto;
+	width: 100%;
+	position: relative;
+	margin: 0 auto;
+	font-size: 13px;
+}
+
+#footer{
+	width: 100%;
+	position: relative;
+}
+
+#social-icons-row{
+	height: auto;
+	width: 100%;
+	position: relative;
+	font-size: 0;
+	letter-spacing: 0;
+	text-align: right;
+
+}
+
+.social-icon{
+	height: 20px;
+	width: 20px;
+	position: relative;
+	background-size: contain;
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+	display: inline-block;
+}
+
+#fb-icon{
+	background-image: url(/images/fb_icon.png);
+}
+
+#twitter-icon{
+	background-image: url(/images/twitter_icon.png);
+}
+
+#copyrights{
+	width: 100%;
+	color: #a4a4a4;
+	font-size: 12px;
+	text-align: right;
 }
