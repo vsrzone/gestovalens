@@ -74,9 +74,9 @@ $( document ).ready(function(){
 
 // genedate active elements css
 
-function generateStyling(){
-	var gender_male = $('#')
-}
+// function generateStyling(){
+// 	var gender_male = $('#')
+// }
 
 // function for color boxes
 
