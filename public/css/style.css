@@ -74,6 +74,38 @@ a, a:visited {
 	right: 0;
 }
 
+#gender-selection-menu{
+	height: auto;
+	width: 100%;
+	position: relative;
+	font-size: 0;
+	letter-spacing: 0;
+	text-align: center;
+}
+
+.gender-icon{
+	height: 150px;
+	width: 100px;
+	position: relative;
+	display: inline-block;
+	background-size: contain;
+	opacity: 0.4;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.gender-icon:hover{
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+}
+
+#male-icon{
+	background-image: url(../images/male-icon.png);
+}
+
+#female-icon{
+	background-image: url(../images/female-icon.png);
+}
+
 #color-selection-menu{
 	width: 100%;
 	position: relative;

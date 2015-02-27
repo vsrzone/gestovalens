@@ -10,10 +10,11 @@ var colors = {'t-blue':'#039ddd',
 			't-pink':'#ca34d3'
 			};
 
-var currentTColor = '#039ddd';
-var currentLogoColor = '#eeeeee';
-var currentActive = 'tshirt';
-var currentArtwork;
+var currentTColor = '#039ddd'; 			// stores current tshirt color
+var currentLogoColor = '#eeeeee';		// stores current logo color
+var currentActive = 'tshirt';			// stores current avtive elemenet (tshirt/artwork)
+var currentArtwork;						// stores current active artwork
+var currentGender = 'male';				// stores current active gender (male/female)
 
 // canvas variables
 var designCanvas = document.getElementById('design-canvas');
@@ -28,15 +29,29 @@ var colorCanvas = document.createElement('canvas');
 var colorCtx = colorCanvas.getContext('2d');
 
 $( document ).ready(function(){
+	
+	//main initialisation for color boxes/design floor /artworks
 	genarateColorBoxes();
 	initDesignCanvas();
-	
+	initArtworks();
+
+	// on click functions
 	$('#tshirt-color-tab').click(function(){
 		currentActive = 'tshirt';
 	});
 
 	$('#design-color-tab').click(function(){
 		currentActive = 'artwork';
+	});
+
+	$('#male-icon').click(function(){
+		currentGender = 'male';
+		initDesignCanvas();
+	});
+
+	$('#female-icon').click(function(){
+		currentGender = 'female';
+		initDesignCanvas();
 	});
 
 	$(document).on('click','.color-block', function(e){
@@ -56,6 +71,12 @@ $( document ).ready(function(){
 
 	
 });
+
+// genedate active elements css
+
+function generateStyling(){
+	var gender_male = $('#')
+}
 
 // function for color boxes
 
@@ -80,6 +101,22 @@ function genarateColorBoxes(){
 	}
 }
 
+// main initialisation for the artworks
+
+function initArtworks(){
+
+	var loader = new PxLoader();
+	for (var i = 0; i < artworks.length; i++) {
+		artworks[i].image = loader.addImage(http_path+artworks[i]['url']);
+	};
+
+	loader.addCompletionListener(function(){
+		generateArtworks();
+	});
+
+	loader.start();
+}
+
 // main initialisation for the design floor
 
 function initDesignCanvas(){
@@ -87,24 +124,18 @@ function initDesignCanvas(){
 	designCanvas.height = $(designCanvas.parentNode).innerHeight();
 
 	var loader = new PxLoader();
-	design_bg = loader.addImage(http_path+'/images/design_bg.png');
-	design_area = loader.addImage(http_path+'/images/design_area.png');
+	if (currentGender == 'male') {
+		design_bg = loader.addImage(http_path+'/images/design_bg.png');
+		design_area = loader.addImage(http_path+'/images/design_area.png');
+	}else{
+		design_bg = loader.addImage(http_path+'/images/design_bg_female.png');
+		design_area = loader.addImage(http_path+'/images/design_area_female.png');
+	}
+	
 
 	loader.addCompletionListener(function() { 
 		drawImage(design_bg, designCanvas, designContext);
-		addTshirt(currentTColor);
-
-		var loader = new PxLoader();
-		for (var i = 0; i < artworks.length; i++) {
-			artworks[i].image = loader.addImage(http_path+artworks[i]['url']);
-		};
-
-		loader.addCompletionListener(function(){
-			generateArtworks();
-		});
-
-		loader.start();
-
+		addTshirt(currentTColor);		
 	});
 
 	loader.start();
