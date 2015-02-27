@@ -91,12 +91,9 @@ a, a:visited {
 	background-size: contain;
 	opacity: 0.4;
 	transition: opacity 0.3s ease-in-out;
+	cursor: pointer;
 }
 
-.gender-icon:hover{
-	opacity: 1;
-	transition: opacity 0.3s ease-in-out;
-}
 
 #male-icon{
 	background-image: url(../images/male-icon.png);
@@ -128,6 +125,7 @@ a, a:visited {
 	display: inline-block;
 	vertical-align: top;
 	cursor: pointer;
+	opacity: 0.4;
 }
 
 #tshirt-color-tab{
@@ -251,4 +249,8 @@ a, a:visited {
 	color: #a4a4a4;
 	font-size: 12px;
 	text-align: right;
+}
+
+.active{
+	opacity: 1.0 !important;
 }

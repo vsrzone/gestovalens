@@ -34,24 +34,29 @@ $( document ).ready(function(){
 	genarateColorBoxes();
 	initDesignCanvas();
 	initArtworks();
+	generateStyling();
 
 	// on click functions
 	$('#tshirt-color-tab').click(function(){
 		currentActive = 'tshirt';
+		generateStyling();
 	});
 
 	$('#design-color-tab').click(function(){
 		currentActive = 'artwork';
+		generateStyling();
 	});
 
 	$('#male-icon').click(function(){
 		currentGender = 'male';
 		initDesignCanvas();
+		generateStyling();
 	});
 
 	$('#female-icon').click(function(){
 		currentGender = 'female';
 		initDesignCanvas();
+		generateStyling();
 	});
 
 	$(document).on('click','.color-block', function(e){
@@ -61,22 +66,57 @@ $( document ).ready(function(){
 		}else{
 			currentLogoColor = colors[color];
 			addArtwok(currentArtwork);
-		};
+		}
+		generateStyling();
+		
 	});
 
 	$(document).on('click','.sample-design', function(e){
 		var artwork = $(e.target).data('artwork-id');
 		addArtwok(artwork);
 	});
-
-	
 });
 
 // genedate active elements css
 
-// function generateStyling(){
-// 	var gender_male = $('#')
-// }
+function generateStyling(){
+	var genderMale = $('#male-icon');
+	var genderFemale = $('#female-icon');
+	
+	if (currentGender == 'male') {
+		genderFemale.removeClass('active');
+		genderMale.addClass('active');
+
+	}else if(currentGender == 'female') {
+		genderMale.removeClass('active');
+		genderFemale.addClass('active');
+	}
+
+	for (var color in colors) {
+		var activeColor = $('#'+color);
+
+		if (currentActive == 'tshirt' && currentTColor == colors[color]) {
+			activeColor.addClass('active');
+		}else if(currentActive == 'artwork' && currentLogoColor == colors[color]){
+			activeColor.addClass('active');
+		}else{
+			activeColor.removeClass('active');
+		}
+	}
+
+	// active (tshirt/artwork) styling
+	
+	var activeTshirt = $('#tshirt-color-tab');
+	var activeDesign = $('#design-color-tab');
+
+	if(currentActive == 'tshirt'){
+		activeDesign.removeClass('active');
+		activeTshirt.addClass('active');
+	}else{
+		activeTshirt.removeClass('active');
+		activeDesign.addClass('active');
+	}
+}
 
 // function for color boxes
 
