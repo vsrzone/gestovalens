@@ -21,6 +21,8 @@ var designCanvas = document.getElementById('design-canvas');
 var designContext = designCanvas.getContext("2d");
 var design_bg;
 var design_area;
+var design_bg_female;
+var design_area_female
 
 var artworkCanvas = document.createElement('canvas');
 var artworkCtx = artworkCanvas.getContext('2d');
@@ -49,14 +51,14 @@ $( document ).ready(function(){
 
 	$('#male-icon').click(function(){
 		currentGender = 'male';
-		initDesignCanvas();
 		generateStyling();
+		loadGenderBg(currentGender);
 	});
 
 	$('#female-icon').click(function(){
 		currentGender = 'female';
-		initDesignCanvas();
 		generateStyling();
+		loadGenderBg(currentGender);
 	});
 
 	$(document).on('click','.color-block', function(e){
@@ -105,7 +107,7 @@ function generateStyling(){
 	}
 
 	// active (tshirt/artwork) styling
-	
+
 	var activeTshirt = $('#tshirt-color-tab');
 	var activeDesign = $('#design-color-tab');
 
@@ -116,6 +118,10 @@ function generateStyling(){
 		activeTshirt.removeClass('active');
 		activeDesign.addClass('active');
 	}
+
+	// active (artwork) styling
+
+
 }
 
 // function for color boxes
@@ -164,22 +170,35 @@ function initDesignCanvas(){
 	designCanvas.height = $(designCanvas.parentNode).innerHeight();
 
 	var loader = new PxLoader();
-	if (currentGender == 'male') {
-		design_bg = loader.addImage(http_path+'/images/design_bg.png');
-		design_area = loader.addImage(http_path+'/images/design_area.png');
-	}else{
-		design_bg = loader.addImage(http_path+'/images/design_bg_female.png');
-		design_area = loader.addImage(http_path+'/images/design_area_female.png');
-	}
+		design_bg_male = loader.addImage(http_path+'/images/design_bg.png');
+		design_area_male = loader.addImage(http_path+'/images/design_area.png');
+		design_bg_female = loader.addImage(http_path+'/images/design_bg_female.png');
+		design_area_female = loader.addImage(http_path+'/images/design_area_female.png');
 	
-
-	loader.addCompletionListener(function() { 
-		drawImage(design_bg, designCanvas, designContext);
-		addTshirt(currentTColor);		
+	loader.addCompletionListener(function() {
+		loadGenderBg(currentGender); 	
 	});
 
 	loader.start();
 
+}
+
+// selecting which gender design
+
+function loadGenderBg(gender){
+	if(gender == 'male'){
+		designContext.clearRect(0, 0, designCanvas.width, designCanvas.height);
+		design_bg = design_bg_male;
+		design_area = design_area_male;
+		drawImage(design_bg, designCanvas, designContext);
+		addTshirt(currentTColor);
+	}else{
+		designContext.clearRect(0, 0, designCanvas.width, designCanvas.height);
+		design_bg = design_bg_female;
+		design_area = design_area_female;
+		drawImage(design_bg, designCanvas, designContext);
+		addTshirt(currentTColor);
+	}
 }
 
 function drawImage(image, canvas, ctx, opacity){
