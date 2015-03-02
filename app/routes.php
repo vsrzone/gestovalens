@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', function()
-{
+Route::get('/', function(){
 	return View::make('index');
 });
 
+Route::get('sizes', function(){
+	return View::make('sizes');
+});
