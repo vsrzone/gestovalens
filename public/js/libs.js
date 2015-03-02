@@ -76,7 +76,10 @@ $( document ).ready(function(){
 	$(document).on('click','.sample-design', function(e){
 		var artwork = $(e.target).data('artwork-id');
 		addArtwok(artwork);
+		generateStyling();
 	});
+
+	
 });
 
 // genedate active elements css
@@ -120,7 +123,20 @@ function generateStyling(){
 	}
 
 	// active (artwork) styling
+	for (var i = 0; i < artworks.length; i++) {
+	
+		var activeArtwork = $('#'+artworks[i]['id']);
 
+		if (i == currentArtwork) {
+			activeArtwork.addClass('active');
+		}else{
+			activeArtwork.removeClass('active');
+		}
+
+		
+	}
+	
+	
 
 }
 
@@ -183,7 +199,7 @@ function initDesignCanvas(){
 
 }
 
-// selecting which gender design
+// selecting which gender design floor to load
 
 function loadGenderBg(gender){
 	if(gender == 'male'){
@@ -354,4 +370,9 @@ function refreshDesignCanvas(){
 	drawImage(colorCanvas, designCanvas, designContext);
 	drawImage(artworkCanvas, designCanvas, designContext);
 	drawImage(design_bg, designCanvas, designContext);
+}
+
+function saveImageAsData(){
+	var dataURL = designCanvas.toDataURL();
+	document.getElementById('canvasImg').src = dataURL;
 }

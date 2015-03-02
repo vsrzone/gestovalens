@@ -19,23 +19,24 @@
 			<div id="editing-menu">
 				<div id="editing-fixed">
 					<div id="gender-selection-menu">
-						<div class="gender-icon" id="male-icon"></div>
-						<div class="gender-icon" id="female-icon"></div>
+						<div class="gender-icon" id="male-icon" title="male"></div>
+						<div class="gender-icon" id="female-icon" title="female"></div>
 					</div>	
 					<div id="color-selection-menu">
 						<div id="selection-menu-icons">
-							<div class="color-tab-icon" id="tshirt-color-tab"></div>
-							<div class="color-tab-icon" id="design-color-tab"></div>
+							<div class="color-tab-icon" id="tshirt-color-tab" title="t-shirt color"></div>
+							<div class="color-tab-icon" id="design-color-tab" title="artwork color"></div>
 						</div>
 						<div id="color-wrapper">
 						</div>
 						<div id="artworks-wrapper">
 						</div>
 						<div id="more-designs">more designs</div>
+						<div id="order-now" class="button">order now</div>
 					</div>
 					<div id="footer">
 						<div id="social-icons-row">
-							<div class="social-icon" id="fb-icon"></div>
+							<a href="www.fb.me/gestovalens"><div class="social-icon" id="fb-icon"></div></a>
 							<div class="social-icon" id="twitter-icon"></div>
 						</div>
 						<div id="copyrights">designed by 
