@@ -15,6 +15,6 @@ Route::get('/', function(){
 	return View::make('index');
 });
 
-Route::get('sizes', function(){
-	return View::make('sizes');
+Route::get('cart', function(){
+	return View::make('cart');
 });

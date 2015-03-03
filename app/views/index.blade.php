@@ -15,7 +15,7 @@
 		<div id="main-wrapper">
 			<div id="deisgn-area">
 				<canvas id="design-canvas"></canvas>
-			</div>
+			</div><!-- end of design area -->			
 			<div id="editing-menu">
 				<div id="editing-fixed">
 					<div id="gender-selection-menu">
@@ -46,9 +46,33 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
+			</div><!-- end of editing menu -->	
+			<div id="sizes-window" class="hidden">
+				<div id="sizes-wrapper">
+					<div class="page-heading">please select the sizes you want to buy</div>
+					<div class="sizes-selector">
+						<div class="size-block">small</div>
+						<div class="size-block">medium</div>
+						<div class="size-block">large</div>
+						<div class="size-block">extra large</div>
+					</div>
+					<form action="#" method="post">
+					<div class="sizes-selector">
+						<div class="size-block"><input type="checkbox" name="small"></div>
+						<div class="size-block"><input type="checkbox" name="medium"></div>
+						<div class="size-block"><input type="checkbox" name="large"></div>
+						<div class="size-block"><input type="checkbox" name="extra-large"></div>
+					</div>
+					<div class="margin-row">
+						<input type="submit" value="add to cart" id="add-to-cart" class="button">
+						<input type="submit" value="check out" id="check-out" class="button">
+					</div>
+					</form>
+					<div class="window-close" id="sizes-close">X</div>
+				</div>
+			</div><!-- end of sizes wrapper -->	
+		</div><!-- end of main wrapper -->
+	</div><!-- end of page wrapper -->
 </body>
 <script type="text/javascript">
 	var http_path = '{{ url() }}';
