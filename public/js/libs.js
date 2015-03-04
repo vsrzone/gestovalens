@@ -79,12 +79,11 @@ $( document ).ready(function(){
 		generateStyling();
 	});
 
-	$('#sizes-close').click(function(){
-		windowClose();
-	});
 
-	$('#order-now').click(function(){
-		windowOpen();
+	$('#more-designs').click(function(){
+		var designView = $('#page-wrapper');
+		designView.removeClass('home-view');
+		designView.addClass('design-view');
 	});
 
 	
@@ -385,12 +384,3 @@ function saveImageAsData(){
 	document.getElementById('canvasImg').src = dataURL;
 }
 
-function windowClose(){
-	var sizesWindow = $('#sizes-window');
-	sizesWindow.addClass('hidden');
-}
-
-function windowOpen(){
-	var sizesWindow = $('#sizes-window');
-	sizesWindow.removeClass('hidden');
-}

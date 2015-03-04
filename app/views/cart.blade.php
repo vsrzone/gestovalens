@@ -14,28 +14,30 @@
 				<div class="item-container item-image-container">
 					<div class="item-image"></div>
 				</div>
-				<div class="item-container item-info-container">
-					<div class="item-title">I am danger</div>
-					<div class="item-details">
-						<!-- <div class="sizes-selector">
-							<div class="size-block">small</div>
-							<div class="size-block">medium</div>
-							<div class="size-block">large</div>
-							<div class="size-block">extra large</div>
-						</div>
-						<div class="sizes-selector">
-							<div class="size-block"><input type="text" name="small"></div>
-							<div class="size-block"><input type="text" name="medium"></div>
-							<div class="size-block"><input type="text" name="large"></div>
-							<div class="size-block"><input type="text" name="extra-large"></div>
-						</div> -->
-					</div>
+				<div class="item-container item-size-container">
+					You have been ordered :
+					<ul id="cart-sizes">
+						<li><div class="cart-size-block"><label>small</label></div><div class="cart-size-block">: <input type="text" name="small" value="1"></div></li>
+						<li><div class="cart-size-block"><label>medium</label></div><div class="cart-size-block">: <input type="text" name="medium" value="1"></div></li>
+						<li><div class="cart-size-block"><label>large</label></div><div class="cart-size-block">: <input type="text" name="large" value="1"></div></li>
+						<li><div class="cart-size-block"><label>extra-large</label></div><div class="cart-size-block">: <input type="text" name="extra-large" value="1"></div></li>
+					</ul>
 				</div>
-				<div class="item-container item-size-container"></div>
-				<div class="item-container item-price-container">Rs. 950.00</div>
+				<div class="item-container item-price-container">
+					<div class="item-title">Rs. 950.00</div>
+					<div class="item-details"></div>
+					<div class="remove-item"><a href="">Remove</a></div>
+				</div>
 			</div><!-- end of an item -->
 		</div><!-- end of cart-items -->
-		<div id="cart-summary"></div><!-- end of cart-summary -->
+		<div id="cart-summary">
+			<div id="summary-title">Cart summary</div>
+			<hr/>
+			<div id="summary-total">Total: Rs.950.00</div>
+			<div class="summary-detail"><input type="submit" value="Proceed to checkout" id="proceed-to-checkout" class="button"></div>
+			<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>
+			
+		</div><!-- end of cart-summary -->
 	</div><!-- end of cart-wrapper -->
 </body>
 
