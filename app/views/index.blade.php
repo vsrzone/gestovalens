@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ url() }}/css/style.css">
 </head>
 <body>
+	<a href="/"><div id="logo"></div></a>
 	<div id="page-wrapper" class="home-view">
 		<div id="item-wrapper">
 		</div>
