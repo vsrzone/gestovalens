@@ -6,7 +6,7 @@ var colors = {'t-blue':'#039ddd',
 			't-red':'#f53a4b', 
 			't-green':'#0fc497',
 			't-white':'#eeeeee',
-			't-darkblue':'#103684',
+			't-darkblue':'#285ecd',
 			't-pink':'#ca34d3'
 			};
 
@@ -29,6 +29,11 @@ var artworkCtx = artworkCanvas.getContext('2d');
 
 var colorCanvas = document.createElement('canvas');
 var colorCtx = colorCanvas.getContext('2d');
+
+// cart items
+
+var cartItems = [];
+var cartItemNo = 0;
 
 $( document ).ready(function(){
 	
@@ -86,6 +91,33 @@ $( document ).ready(function(){
 		designView.addClass('design-view');
 	});
 
+	$('#check-out').click(function(){
+		var designView = $('#page-wrapper');
+		designView.removeClass('home-view');
+		designView.addClass('cart-view');
+	});
+
+	$('.continue-shopping').click(function(){
+		var designView = $('#page-wrapper');
+		designView.removeClass('cart-view');
+		designView.addClass('home-view');
+	});
+
+	$('#add-to-cart').click(function(){
+		saveImageAsData();
+		addToCart();
+		cartItemNo = cartItemNo + 1;
+	});
+
+	//removing items
+
+	$(document).on('click', '.remove-item', function(){
+		var checkout_item = $(this).parent().parent();
+		checkout_item.remove();
+		cartItems.splice(0,1);
+	});
+
+	
 	
 });
 
@@ -380,7 +412,45 @@ function refreshDesignCanvas(){
 }
 
 function saveImageAsData(){
-	var dataURL = designCanvas.toDataURL();
-	document.getElementById('canvasImg').src = dataURL;
+	// var dataURL = designCanvas.toDataURL();
+	// document.getElementById('canvasImg').style.backgroundImage = "url("+dataURL+")";
 }
+
+function addToCart(){
+	var dataURL = designCanvas.toDataURL();
+	cartItems[cartItemNo] = {'id':currentArtwork,
+							'url':dataURL,
+							'tshirtColor':currentTColor
+							}
+	generateCartItems(cartItemNo);
+	console.log(cartItems[cartItemNo]);
+}
+
+function generateCartItems(cartItemNo){
+	var container = $('#cart-items');
+		var box = $('<div class="item-wrapper">\
+							<div class="item-container item-image-container">\
+								<div class="item-image" id="canvasImg"></div>\
+							</div>\
+							<div class="item-container item-size-container">\
+								You have been ordered :\
+								<ul id="cart-sizes">\
+									<li><div class="cart-size-block"><label>small</label></div><div class="cart-size-block">: <input type="text" name="small" value="0"></div></li>\
+									<li><div class="cart-size-block"><label>medium</label></div><div class="cart-size-block">: <input type="text" name="medium" value="0"></div></li>\
+									<li><div class="cart-size-block"><label>large</label></div><div class="cart-size-block">: <input type="text" name="large" value="0"></div></li>\
+									<li><div class="cart-size-block"><label>extra-large</label></div><div class="cart-size-block">: <input type="text" name="extra-large" value="0"></div></li>\
+								</ul>\
+							</div>\
+							<div class="item-container item-price-container">\
+								<div class="item-title">Rs. 950.00</div>\
+								<div class="item-details"></div>\
+								<div class="remove-item">Remove</div>\
+							</div>\
+						</div> <!--  end of an item -->');
+		// <div class="item-wrapper"><div class="item-container item-image-container"><div class="item-image" id="canvasImg"></div></div><div class="item-container item-size-container">You have been ordered :<ul id="cart-sizes"><li><div class="cart-size-block"><label>small</label></div><div class="cart-size-block">: <input type="text" name="small" value="0"></div></li><li><div class="cart-size-block"><label>medium</label></div><div class="cart-size-block">: <input type="text" name="medium" value="0"></div></li><li><div class="cart-size-block"><label>large</label></div><div class="cart-size-block">: <input type="text" name="large" value="0"></div></li><li><div class="cart-size-block"><label>extra-large</label></div><div class="cart-size-block">: <input type="text" name="extra-large" value="0"></div></li></ul></div><div class="item-container item-price-container"><div class="item-title">Rs. 950.00</div><div class="item-details"></div><div class="remove-item"><a href="">Remove</a></div></div></div><!-- end of an item -->
+		box.find('.item-image').css('background-image', 'url('+ cartItems[cartItemNo]['url'] +')');
+		container.append(box);
+}
+
+
 

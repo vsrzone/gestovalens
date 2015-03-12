@@ -43,13 +43,26 @@
 						</div>
 						<div id="copyrights">designed by 
 							<a href="http://www.ingenslk.com/" target="_blank">
-								<span style="color: #858585">ingens</span>
+								<span style="color: #6B6B6B">ingens</span>
 							</a>
 						</div>
 					</div>
 				</div>
 			</div><!-- end of editing menu -->
 		</div><!-- end of main wrapper -->
+		<div id="cart-wrapper-a">
+			<div id="cart-wrapper">
+				<div id="cart-items">
+				</div><!-- end of cart-items -->
+				<div id="cart-summary">
+					<div id="summary-title">Cart summary</div>
+					<hr/>
+					<div id="summary-total">Total: Rs.950.00</div>
+					<div class="summary-detail"><input type="submit" value="Proceed to checkout" id="proceed-to-checkout" class="button"></div>
+					<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>	
+				</div><!-- end of cart-summary -->
+			</div><!-- end of cart-wrapper -->
+		</div><!-- end of cart-wrapper-a -->
 	</div><!-- end of page wrapper -->
 </body>
 <script type="text/javascript">
