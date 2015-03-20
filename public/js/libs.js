@@ -103,22 +103,77 @@ $( document ).ready(function(){
 		designView.addClass('home-view');
 	});
 
+	$('#logo').click(function(){
+		var designView = $('#page-wrapper');
+		designView.removeClass('cart-view');
+		designView.removeClass('design-view');
+		designView.addClass('home-view');
+	});
+
 	$('#add-to-cart').click(function(){
 		saveImageAsData();
 		addToCart();
 		cartItemNo = cartItemNo + 1;
+		updateTotal();
 	});
 
 	//removing items
 
 	$(document).on('click', '.remove-item', function(){
 		var checkout_item = $(this).parent().parent();
+		var cartItemId = checkout_item.data('cartItemId');
 		checkout_item.remove();
-		cartItems.splice(0,1);
+		var i;
+		for (i = 0; i < cartItems.length; i++) {
+			if(cartItems[i].cartItemNo == cartItemId){
+				break;
+			}
+		}
+		cartItems.splice(i,1);
+		updateTotal();
 	});
 
-	
-	
+	//checking keyup event
+
+	$(document).on('keyup', '.cart-input', function(){
+
+		var checkout_item = $(this).parent().parent().parent().parent().parent();
+		var cartItemId = checkout_item.data('cartItemId');
+		updateQuantity(cartItemId, checkout_item);
+		updateTotal();
+	});
+
+	//checking change event
+
+	$(document).on('change', '.cart-input', function(){
+		if($(this).val().trim() == '' || isNaN(parseInt($(this).val()))){
+			$(this).val(0);
+		}
+		$(this).val( Math.floor($(this).val()) );
+
+		var checkout_item = $(this).parent().parent().parent().parent().parent();
+		var cartItemId = checkout_item.data('cartItemId');
+		updateQuantity(cartItemId, checkout_item);
+		updateTotal();
+	});
+
+	//checking keydown event
+
+	$(document).on('keydown', '.cart-input', function(e){
+		// Allow: backspace, delete, tab, escape, enter and .
+		if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+			 // Allow: Ctrl+A
+			(e.keyCode == 65 && e.ctrlKey === true) || 
+			 // Allow: home, end, left, right
+			(e.keyCode >= 35 && e.keyCode <= 39)) {
+				 // let it happen, don't do anything
+				 return;
+		}
+		// Ensure that it is a number and stop the keypress
+		if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+			e.preventDefault();
+		}
+	});	
 });
 
 // genedate active elements css
@@ -418,12 +473,13 @@ function saveImageAsData(){
 
 function addToCart(){
 	var dataURL = designCanvas.toDataURL();
-	cartItems[cartItemNo] = {'id':currentArtwork,
+	cartItems[cartItemNo] = {'cartItemNo':cartItemNo,
+							'id':currentArtwork,
 							'url':dataURL,
-							'tshirtColor':currentTColor
+							'tshirtColor':currentTColor,
+							'sizesQuantity':[0,0,0,0]
 							}
 	generateCartItems(cartItemNo);
-	console.log(cartItems[cartItemNo]);
 }
 
 function generateCartItems(cartItemNo){
@@ -435,10 +491,10 @@ function generateCartItems(cartItemNo){
 							<div class="item-container item-size-container">\
 								You have been ordered :\
 								<ul id="cart-sizes">\
-									<li><div class="cart-size-block"><label>small</label></div><div class="cart-size-block">: <input type="text" name="small" value="0"></div></li>\
-									<li><div class="cart-size-block"><label>medium</label></div><div class="cart-size-block">: <input type="text" name="medium" value="0"></div></li>\
-									<li><div class="cart-size-block"><label>large</label></div><div class="cart-size-block">: <input type="text" name="large" value="0"></div></li>\
-									<li><div class="cart-size-block"><label>extra-large</label></div><div class="cart-size-block">: <input type="text" name="extra-large" value="0"></div></li>\
+									<li><div class="cart-size-block"><label>small</label></div><div class="cart-size-block">: <input class="cart-input" type="text" name="small" value="0"></div></li>\
+									<li><div class="cart-size-block"><label>medium</label></div><div class="cart-size-block">: <input class="cart-input" type="text" name="medium" value="0"></div></li>\
+									<li><div class="cart-size-block"><label>large</label></div><div class="cart-size-block">: <input class="cart-input" type="text" name="large" value="0"></div></li>\
+									<li><div class="cart-size-block"><label>extra-large</label></div><div class="cart-size-block">: <input class="cart-input" type="text" name="extra-large" value="0"></div></li>\
 								</ul>\
 							</div>\
 							<div class="item-container item-price-container">\
@@ -447,9 +503,52 @@ function generateCartItems(cartItemNo){
 								<div class="remove-item">Remove</div>\
 							</div>\
 						</div> <!--  end of an item -->');
-		// <div class="item-wrapper"><div class="item-container item-image-container"><div class="item-image" id="canvasImg"></div></div><div class="item-container item-size-container">You have been ordered :<ul id="cart-sizes"><li><div class="cart-size-block"><label>small</label></div><div class="cart-size-block">: <input type="text" name="small" value="0"></div></li><li><div class="cart-size-block"><label>medium</label></div><div class="cart-size-block">: <input type="text" name="medium" value="0"></div></li><li><div class="cart-size-block"><label>large</label></div><div class="cart-size-block">: <input type="text" name="large" value="0"></div></li><li><div class="cart-size-block"><label>extra-large</label></div><div class="cart-size-block">: <input type="text" name="extra-large" value="0"></div></li></ul></div><div class="item-container item-price-container"><div class="item-title">Rs. 950.00</div><div class="item-details"></div><div class="remove-item"><a href="">Remove</a></div></div></div><!-- end of an item -->
 		box.find('.item-image').css('background-image', 'url('+ cartItems[cartItemNo]['url'] +')');
+		box.data('cartItemId', cartItemNo);
 		container.append(box);
+}
+
+function updateTotal(){
+	var total = 0;
+	var numberOfItems = 0;
+	var i;
+	for (i = 0; i < cartItems.length; i++) {
+		for (var j = 0; j < cartItems[i]['sizesQuantity'].length; j++) {
+			total += 950*cartItems[i]['sizesQuantity'][j];
+			numberOfItems += cartItems[i]['sizesQuantity'][j];
+			if(isNaN(total)){
+				total = 0;
+			}
+			$('#summary-total').text('Total: Rs.'+total+'.00');
+			if (numberOfItems == 1) {
+				$('#summary-qty').text('('+numberOfItems+' item )');
+			}else{
+				$('#summary-qty').text('('+numberOfItems+' items )');
+			}
+			
+			console.log(total);
+		}
+	};
+}
+
+function updateQuantity(cartItemId, checkout_item){
+	var i;
+	for (i = 0; i < cartItems.length; i++) {
+		if(cartItems[i].cartItemNo == cartItemId){
+			break;
+		}
+	}
+	// for (var j = 0; j < cartItems[i].sizesQuantity.length; j++) {
+	// }
+	var qtyArray = [];
+	 checkout_item.find('.cart-input').each(function(){
+
+	 	qtyArray.push(parseInt($(this).val()));
+	});
+
+	for (var j = 0; j < cartItems[i]['sizesQuantity'].length; j++) {
+			cartItems[i]['sizesQuantity'][j] = qtyArray[j];
+	};
 }
 
 

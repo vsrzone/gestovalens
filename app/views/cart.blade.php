@@ -33,7 +33,7 @@
 		<div id="cart-summary">
 			<div id="summary-title">Cart summary</div>
 			<hr/>
-			<div id="summary-total">Total: Rs.950.00</div>
+			<div id="summary-total"></div>
 			<div class="summary-detail"><input type="submit" value="Proceed to checkout" id="proceed-to-checkout" class="button"></div>
 			<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>
 			

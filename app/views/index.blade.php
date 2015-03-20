@@ -9,9 +9,35 @@
 	<link rel="stylesheet" type="text/css" href="{{ url() }}/css/style.css">
 </head>
 <body>
-	<a href="/"><div id="logo"></div></a>
+	<div id="logo"></div>
 	<div id="page-wrapper" class="home-view">
 		<div id="item-wrapper">
+			<div class="contact-details" id="contact-info-wrapper">
+				<div class="contact-desc">
+					<p class="contact-info">19, 4th Lane,</p>
+					<p class="contact-info">Vidarshana Mawatha,</p>
+					<p class="contact-info">Galavilawaththa,</p>
+					<p class="contact-info">Homagama</p>
+				</div>
+				<div class="contact-desc">
+					<p class="contact-info"><img lass="contact-icon" src="images/telephone_icon.png" width="20px" height="auto"> 077-4424634</p>
+					
+					<p class="contact-info"><img lass="contact-icon" src="images/email_icon.png" width="20px" height="auto"> info@gestovalens.com</p>
+				</div>
+			</div>
+			<div class="contact-details" id="contact-how-to">
+				<div class=""></div>
+			</div>
+			<div class="contact-details" id="contact-form-wrapper">
+				<div id="contact-form">
+					<input type="text" id="contact-name" class="input" placeholder="Name">
+					<input type="text" id="contact-name" class="input" placeholder="Company">
+					<input type="text" id="contact-name" class="input" placeholder="Email">
+					<input type="text" id="contact-name" class="input" placeholder="Phone">
+					<textarea placeholder="Message" id="contact-message"></textarea>
+				</div>
+				<div id="contact-map"></div>
+			</div>
 		</div>
 		<div id="main-wrapper">
 			<div id="deisgn-area">
@@ -57,7 +83,8 @@
 				<div id="cart-summary">
 					<div id="summary-title">Cart summary</div>
 					<hr/>
-					<div id="summary-total">Total: Rs.950.00</div>
+					<div id="summary-total">Total: Rs. 00.00</div>
+					<div id="summary-qty">You have 0 items in your cart</div>
 					<div class="summary-detail"><input type="submit" value="Proceed to checkout" id="proceed-to-checkout" class="button"></div>
 					<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>	
 				</div><!-- end of cart-summary -->
