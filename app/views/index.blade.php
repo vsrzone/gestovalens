@@ -14,19 +14,20 @@
 		<div id="item-wrapper">
 			<div class="contact-details" id="contact-info-wrapper">
 				<div class="contact-desc">
-					<p class="contact-info">19, 4th Lane,</p>
-					<p class="contact-info">Vidarshana Mawatha,</p>
-					<p class="contact-info">Galavilawaththa,</p>
-					<p class="contact-info">Homagama</p>
+					<div class="contact-icon" id="contact-address"></div>
+					<p class="contact-info">19, 4th Lane,<br/>
+					Vidarshana Mawatha,<br/>
+					Galavilawaththa,<br/>
+					Homagama</p>
 				</div>
 				<div class="contact-desc">
-					<p class="contact-info"><img lass="contact-icon" src="images/telephone_icon.png" width="20px" height="auto"> 077-4424634</p>
-					
-					<p class="contact-info"><img lass="contact-icon" src="images/email_icon.png" width="20px" height="auto"> info@gestovalens.com</p>
+					<div class="contact-icon" id="contact-tel"></div>
+					<p class="contact-info"><!-- <img class="contact-icon" src="images/telephone_icon.png" width="20px" height="auto"> --> 077-4424634</p>
 				</div>
-			</div>
-			<div class="contact-details" id="contact-how-to">
-				<div class=""></div>
+				<div class="contact-desc">
+					<div class="contact-icon" id="contact-mail"></div>
+					<p class="contact-info">info@gestovalens.com</p>
+				</div>
 			</div>
 			<div class="contact-details" id="contact-form-wrapper">
 				<div id="contact-form">
@@ -36,7 +37,6 @@
 					<input type="text" id="contact-name" class="input" placeholder="Phone">
 					<textarea placeholder="Message" id="contact-message"></textarea>
 				</div>
-				<div id="contact-map"></div>
 			</div>
 		</div>
 		<div id="main-wrapper">
@@ -89,6 +89,7 @@
 					<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>	
 				</div><!-- end of cart-summary -->
 			</div><!-- end of cart-wrapper -->
+			<div></div>
 		</div><!-- end of cart-wrapper-a -->
 	</div><!-- end of page wrapper -->
 </body>

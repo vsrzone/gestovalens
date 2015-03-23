@@ -101,6 +101,7 @@ $( document ).ready(function(){
 		var designView = $('#page-wrapper');
 		designView.removeClass('cart-view');
 		designView.addClass('home-view');
+		$('#page-wrapper').removeProp('width');
 	});
 
 	$('#logo').click(function(){
@@ -477,6 +478,7 @@ function addToCart(){
 							'id':currentArtwork,
 							'url':dataURL,
 							'tshirtColor':currentTColor,
+							'logoColor':currentLogoColor,
 							'sizesQuantity':[0,0,0,0]
 							}
 	generateCartItems(cartItemNo);
@@ -550,6 +552,4 @@ function updateQuantity(cartItemId, checkout_item){
 			cartItems[i]['sizesQuantity'][j] = qtyArray[j];
 	};
 }
-
-
 
