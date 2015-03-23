@@ -192,17 +192,17 @@ function generateStyling(){
 		genderFemale.addClass('active');
 	}
 
-	for (var color in colors) {
-		var activeColor = $('#'+color);
+	// for (var color in colors) {
+	// 	var activeColor = $('#'+color);
 
-		if (currentActive == 'tshirt' && currentTColor == colors[color]) {
-			activeColor.addClass('active');
-		}else if(currentActive == 'artwork' && currentLogoColor == colors[color]){
-			activeColor.addClass('active');
-		}else{
-			activeColor.removeClass('active');
-		}
-	}
+	// 	if (currentActive == 'tshirt' && currentTColor == colors[color]) {
+	// 		activeColor.addClass('active');
+	// 	}else if(currentActive == 'artwork' && currentLogoColor == colors[color]){
+	// 		activeColor.addClass('active');
+	// 	}else{
+	// 		activeColor.removeClass('active');
+	// 	}
+	// }
 
 	// active (tshirt/artwork) styling
 
@@ -552,4 +552,3 @@ function updateQuantity(cartItemId, checkout_item){
 			cartItems[i]['sizesQuantity'][j] = qtyArray[j];
 	};
 }
-

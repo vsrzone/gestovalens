@@ -89,7 +89,15 @@
 					<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>	
 				</div><!-- end of cart-summary -->
 			</div><!-- end of cart-wrapper -->
-			<div></div>
+			<div id="alert-wrapper">
+				<div id="alert-box">
+					<div id="alert-content">
+						<p>Are you sure you want to remove this item?</p>
+						<div class="confirm-button button">Remove Item</div>
+						<div class="confirm-button button">Cancel</div>
+					</div>
+				</div>
+			</div>
 		</div><!-- end of cart-wrapper-a -->
 	</div><!-- end of page wrapper -->
 </body>
