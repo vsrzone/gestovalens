@@ -35,6 +35,11 @@ var colorCtx = colorCanvas.getContext('2d');
 var cartItems = [];
 var cartItemNo = 0;
 
+// remove item
+
+var removeItem;
+var removeCartItemId;
+
 $( document ).ready(function(){
 	
 	//main initialisation for color boxes/design floor /artworks
@@ -85,23 +90,25 @@ $( document ).ready(function(){
 	});
 
 
-	$('#more-designs').click(function(){
+	$('#contact-page').click(function(){
 		var designView = $('#page-wrapper');
 		designView.removeClass('home-view');
+		designView.removeClass('cart-view');
 		designView.addClass('design-view');
 	});
 
-	$('#check-out').click(function(){
+	$('.check-out').click(function(){
 		var designView = $('#page-wrapper');
+		designView.removeClass('design-view');
 		designView.removeClass('home-view');
 		designView.addClass('cart-view');
 	});
 
 	$('.continue-shopping').click(function(){
 		var designView = $('#page-wrapper');
+		designView.removeClass('design-view');
 		designView.removeClass('cart-view');
 		designView.addClass('home-view');
-		$('#page-wrapper').removeProp('width');
 	});
 
 	$('#logo').click(function(){
@@ -118,20 +125,37 @@ $( document ).ready(function(){
 		updateTotal();
 	});
 
+	//cart-input color change
+
+	$(document).on('click', '.cart-input', function(){
+		var selectedCartInput = $(this);
+		selectedCartInput.css('background-color', '#fff');
+		selectedCartInput.css('color', '#777');
+	});
+
+	$(document).on('blur', '.cart-input', function(){
+		var selectedCartInput = $(this);
+		selectedCartInput.css('background-color', '#fff');
+		selectedCartInput.css('color', '#777');
+	});
+
 	//removing items
 
 	$(document).on('click', '.remove-item', function(){
-		var checkout_item = $(this).parent().parent();
-		var cartItemId = checkout_item.data('cartItemId');
-		checkout_item.remove();
-		var i;
-		for (i = 0; i < cartItems.length; i++) {
-			if(cartItems[i].cartItemNo == cartItemId){
-				break;
-			}
-		}
-		cartItems.splice(i,1);
+		removeItem = $(this).parent().parent();
+		removeCartItemId = removeItem.data('cartItemId');
+		$('#alert-wrapper').css('display', 'block');
 		updateTotal();
+		// $('#alert-wrapper').css('display', 'none')
+	});
+
+	$('#remove-item').click(function(){
+			removeCartItem(removeItem, removeCartItemId);
+			$('#alert-wrapper').css('display', 'none');
+	});
+
+	$('#cencel-remove-item').click(function(){
+			$('#alert-wrapper').css('display', 'none');
 	});
 
 	//checking keyup event
@@ -141,7 +165,6 @@ $( document ).ready(function(){
 		var checkout_item = $(this).parent().parent().parent().parent().parent();
 		var cartItemId = checkout_item.data('cartItemId');
 		updateQuantity(cartItemId, checkout_item);
-		updateTotal();
 	});
 
 	//checking change event
@@ -155,26 +178,19 @@ $( document ).ready(function(){
 		var checkout_item = $(this).parent().parent().parent().parent().parent();
 		var cartItemId = checkout_item.data('cartItemId');
 		updateQuantity(cartItemId, checkout_item);
-		updateTotal();
 	});
 
 	//checking keydown event
 
 	$(document).on('keydown', '.cart-input', function(e){
-		// Allow: backspace, delete, tab, escape, enter and .
-		if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-			 // Allow: Ctrl+A
-			(e.keyCode == 65 && e.ctrlKey === true) || 
-			 // Allow: home, end, left, right
-			(e.keyCode >= 35 && e.keyCode <= 39)) {
-				 // let it happen, don't do anything
-				 return;
-		}
-		// Ensure that it is a number and stop the keypress
-		if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-			e.preventDefault();
-		}
-	});	
+		checkIfNumber(e);
+	});
+
+	// form validations
+	$(document).on('keydown', '#contact-phone', function(e){
+		checkIfNumber(e);
+	});
+
 });
 
 // genedate active elements css
@@ -527,8 +543,6 @@ function updateTotal(){
 			}else{
 				$('#summary-qty').text('('+numberOfItems+' items )');
 			}
-			
-			console.log(total);
 		}
 	};
 }
@@ -540,10 +554,8 @@ function updateQuantity(cartItemId, checkout_item){
 			break;
 		}
 	}
-	// for (var j = 0; j < cartItems[i].sizesQuantity.length; j++) {
-	// }
 	var qtyArray = [];
-	 checkout_item.find('.cart-input').each(function(){
+	checkout_item.find('.cart-input').each(function(){
 
 	 	qtyArray.push(parseInt($(this).val()));
 	});
@@ -551,4 +563,33 @@ function updateQuantity(cartItemId, checkout_item){
 	for (var j = 0; j < cartItems[i]['sizesQuantity'].length; j++) {
 			cartItems[i]['sizesQuantity'][j] = qtyArray[j];
 	};
+	updateTotal();
+}
+
+function removeCartItem(removeItem, removeCartItemId){
+	removeItem.remove();
+	var i;
+	for (i = 0; i < cartItems.length; i++) {
+		if(cartItems[i].cartItemNo == removeCartItemId){
+			break;
+		}
+	}
+	cartItems.splice(i,1);
+	updateTotal();
+}
+
+function checkIfNumber(e){
+
+	// Allow: backspace, delete, tab, escape, enter and .
+	if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+		 // Allow: Ctrl+A
+		(e.keyCode == 65 && e.ctrlKey === true) || 
+		 // Allow: home, end, left, right
+		(e.keyCode >= 35 && e.keyCode <= 39)) {
+			 // let it happen, don't do anything
+			 return;
+	}
+	if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+		e.preventDefault();
+	}
 }

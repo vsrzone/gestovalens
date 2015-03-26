@@ -9,7 +9,15 @@
 	<link rel="stylesheet" type="text/css" href="{{ url() }}/css/style.css">
 </head>
 <body>
-	<div id="logo"></div>
+	<div id="logo-wrapper">
+		<ul id="logo-ul">
+			<a id="logo"><img src="images/logo.png" width="100%" height="100%" alt="Gesto Valens" title="Gesto Valens"></a>
+			<li><a class="menu-item" id="top-nav"><p class="nav-icon">H</p></a></li>
+			<li><a class="menu-item" id="left-nav"><p class="nav-icon" id="contact-page">C</p></a></li>
+			<li><a class="menu-item" id="bottom-nav"><p class="nav-icon" id="nav-facebook">F</p></a></li>
+			<li><a class="menu-item" id="right-nav"><p class="nav-icon check-out">C</p></a></li>
+		</ul>
+	</div>
 	<div id="page-wrapper" class="home-view">
 		<div id="item-wrapper">
 			<div class="contact-details" id="contact-info-wrapper">
@@ -32,10 +40,11 @@
 			<div class="contact-details" id="contact-form-wrapper">
 				<div id="contact-form">
 					<input type="text" id="contact-name" class="input" placeholder="Name">
-					<input type="text" id="contact-name" class="input" placeholder="Company">
-					<input type="text" id="contact-name" class="input" placeholder="Email">
-					<input type="text" id="contact-name" class="input" placeholder="Phone">
+					<input type="text" id="contact-company" class="input" placeholder="Company">
+					<input type="text" id="contact-email" class="input" placeholder="Email">
+					<input type="text" id="contact-phone" class="input" placeholder="Phone">
 					<textarea placeholder="Message" id="contact-message"></textarea>
+					<input type="submit" value="Send" class="button" id="contact-submit">
 				</div>
 			</div>
 		</div>
@@ -60,7 +69,7 @@
 						</div>
 						<div id="more-designs" class="margin-t-10">more designs</div>
 						<div id="add-to-cart" class="button margin-t-10">add to cart</div>
-						<div id="check-out" class="button margin-t-10">check out</div>
+						<div id="check-out" class="button margin-t-10 check-out">check out</div>
 					</div>
 					<div id="footer">
 						<div id="social-icons-row">
@@ -79,12 +88,13 @@
 		<div id="cart-wrapper-a">
 			<div id="cart-wrapper">
 				<div id="cart-items">
+					<!-- <div class="item-wrapper"></div> -->
 				</div><!-- end of cart-items -->
 				<div id="cart-summary">
-					<div id="summary-title">Cart summary</div>
+					<p id="summary-title">Cart summary</p>
 					<hr/>
-					<div id="summary-total">Total: Rs. 00.00</div>
-					<div id="summary-qty">You have 0 items in your cart</div>
+					<p id="summary-total">Total: Rs. 00.00</p>
+					<p id="summary-qty">You have 0 items in your cart</p>
 					<div class="summary-detail"><input type="submit" value="Proceed to checkout" id="proceed-to-checkout" class="button"></div>
 					<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>	
 				</div><!-- end of cart-summary -->
@@ -93,8 +103,8 @@
 				<div id="alert-box">
 					<div id="alert-content">
 						<p>Are you sure you want to remove this item?</p>
-						<div class="confirm-button button">Remove Item</div>
-						<div class="confirm-button button">Cancel</div>
+						<div class="alert-button button" id="remove-item">Remove Item</div>
+						<div class="alert-button button" id="cencel-remove-item">Cancel</div>
 					</div>
 				</div>
 			</div>
