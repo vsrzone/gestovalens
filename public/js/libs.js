@@ -40,6 +40,10 @@ var cartItemNo = 0;
 var removeItem;
 var removeCartItemId;
 
+$(window).resize(function() { 
+	initDesignCanvas();
+});
+
 $( document ).ready(function(){
 	
 	//main initialisation for color boxes/design floor /artworks
@@ -135,8 +139,11 @@ $( document ).ready(function(){
 
 	$(document).on('blur', '.cart-input', function(){
 		var selectedCartInput = $(this);
-		selectedCartInput.css('background-color', '#fff');
-		selectedCartInput.css('color', '#777');
+		var selectedCartInputValue = parseInt(selectedCartInput.val());
+		if(selectedCartInputValue == "" || selectedCartInputValue == 0){
+		selectedCartInput.css('background-color', '#E8E8E8');
+		selectedCartInput.css('color', '#E8E8E8');
+		}
 	});
 
 	//removing items
@@ -305,9 +312,7 @@ function initDesignCanvas(){
 	loader.addCompletionListener(function() {
 		loadGenderBg(currentGender); 	
 	});
-
 	loader.start();
-
 }
 
 // selecting which gender design floor to load
@@ -407,19 +412,23 @@ function colorTransition(image, canvas, ctx, opacity){
 var artworks = [
 			{
 				id : 'i_am_danger',
-				url : '/images/designs/i_am_danger.png'
+				url : '/images/designs/i_am_danger.png',
+				title : 'I am danger'
 			},
 			{
 				id : 'icc_cwc', 
-				url : '/images/designs/icc_cwc_sri_lanka.png'
+				url : '/images/designs/icc_cwc_sri_lanka.png',
+				title : 'Sri Lanka Cricket'
 			},
 			{
 				id : 'sons_of_anarchy', 
-				url : '/images/designs/sons_of_anarchy.png'
+				url : '/images/designs/sons_of_anarchy.png',
+				title : 'Sons of Anarchy'
 			},
 			{
 				id : 'winter_is_coming', 
-				url : '/images/designs/winter_is_coming.png'
+				url : '/images/designs/winter_is_coming.png',
+				title : 'Winter is Coming'
 			}
 	];
 
@@ -436,8 +445,7 @@ function generateArtworks(){
 		 	container.append(currentRow);
 		 }
 
-		 var box = $('<div class="sample-design"><div class="artwork-wrapper"></div></div>');
-		 box.children('.artwork-wrapper').css('background-image', 'url('+http_path+artworks[i]['url']+')');
+		 var box = $('<div class="sample-design"><img src="'+http_path+artworks[i]['url']+'" class="artwork-wrapper" alt="'+artworks[i]['title']+'" title="'+artworks[i]['title']+'"></div>');
 		 box.children('.artwork-wrapper').attr('id', artworks[i]['id']);
 		 box.children('.artwork-wrapper').data('artwork-id', i);
 

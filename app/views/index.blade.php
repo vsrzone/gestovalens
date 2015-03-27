@@ -65,12 +65,13 @@
 						</div>
 						<div id="color-wrapper">
 						</div>
+					</div>
 						<div id="artworks-wrapper">
 						</div>
-						<div id="more-designs" class="margin-t-10">more designs</div>
-						<div id="add-to-cart" class="button margin-t-10">add to cart</div>
-						<div id="check-out" class="button margin-t-10 check-out">check out</div>
-					</div>
+						<div>
+							<div id="add-to-cart" class="button margin-t-10">add to cart</div>
+							<div id="check-out" class="button margin-t-10 check-out">check out</div>
+						</div>	
 					<div id="footer">
 						<div id="social-icons-row">
 							<a href="http://www.fb.me/gestovalens"><div class="social-icon" id="fb-icon"></div></a>
