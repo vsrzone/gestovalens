@@ -9,6 +9,15 @@
 	<link rel="stylesheet" type="text/css" href="{{ url() }}/css/style.css">
 </head>
 <body>
+<div id="alert-wrapper">
+	<div id="alert-box">
+		<div id="alert-content">
+			<p>Are you sure you want to remove this item?</p>
+			<div class="alert-button button" id="remove-item">Remove Item</div>
+			<div class="alert-button button" id="cencel-remove-item">Cancel</div>
+		</div>
+	</div>
+</div>
 	<div id="logo-wrapper">
 		<ul id="logo-ul">
 			<a id="logo"><img src="images/logo.png" width="100%" height="100%" alt="Gesto Valens" title="Gesto Valens"></a>
@@ -30,7 +39,7 @@
 				</div>
 				<div class="contact-desc">
 					<div class="contact-icon" id="contact-tel"></div>
-					<p class="contact-info"><!-- <img class="contact-icon" src="images/telephone_icon.png" width="20px" height="auto"> --> 077-4424634</p>
+					<p class="contact-info"><!-- <img class="contact-icon" src="images/telephone_icon.png" width="20px" height="auto"> --> <a href="tel:+94774424634">077-4424634</a></p>
 				</div>
 				<div class="contact-desc">
 					<div class="contact-icon" id="contact-mail"></div>
@@ -54,16 +63,18 @@
 			</div><!-- end of design area -->			
 			<div id="editing-menu">
 				<div id="editing-fixed">
-					<div id="gender-selection-menu">
-						<div class="gender-icon" id="male-icon" title="male"></div>
-						<div class="gender-icon" id="female-icon" title="female"></div>
-					</div>	
-					<div id="color-selection-menu">
-						<div id="selection-menu-icons">
-							<div class="color-tab-icon" id="tshirt-color-tab" title="t-shirt color"></div>
-							<div class="color-tab-icon" id="design-color-tab" title="artwork color"></div>
-						</div>
-						<div id="color-wrapper">
+					<div id="gender-color-wrapper">
+						<div id="gender-selection-menu">
+							<div class="gender-icon" id="male-icon" title="male"></div>
+							<div class="gender-icon" id="female-icon" title="female"></div>
+						</div>	
+						<div id="color-selection-menu">
+							<div id="selection-menu-icons">
+								<div class="color-tab-icon" id="tshirt-color-tab" title="t-shirt color"></div>
+								<div class="color-tab-icon" id="design-color-tab" title="artwork color"></div>
+							</div>
+							<div id="color-wrapper">
+							</div>
 						</div>
 					</div>
 						<div id="artworks-wrapper">
@@ -100,15 +111,7 @@
 					<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>	
 				</div><!-- end of cart-summary -->
 			</div><!-- end of cart-wrapper -->
-			<div id="alert-wrapper">
-				<div id="alert-box">
-					<div id="alert-content">
-						<p>Are you sure you want to remove this item?</p>
-						<div class="alert-button button" id="remove-item">Remove Item</div>
-						<div class="alert-button button" id="cencel-remove-item">Cancel</div>
-					</div>
-				</div>
-			</div>
+			
 		</div><!-- end of cart-wrapper-a -->
 	</div><!-- end of page wrapper -->
 </body>

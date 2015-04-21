@@ -41,6 +41,7 @@ var removeItem;
 var removeCartItemId;
 
 $(window).resize(function() { 
+	setCanvasHeight();
 	initDesignCanvas();
 });
 
@@ -48,6 +49,7 @@ $( document ).ready(function(){
 	
 	//main initialisation for color boxes/design floor /artworks
 	genarateColorBoxes();
+	setCanvasHeight();
 	initDesignCanvas();
 	initArtworks();
 	generateStyling();
@@ -99,6 +101,7 @@ $( document ).ready(function(){
 		designView.removeClass('home-view');
 		designView.removeClass('cart-view');
 		designView.addClass('design-view');
+		window.scrollTo(0,0);
 	});
 
 	$('.check-out').click(function(){
@@ -106,6 +109,7 @@ $( document ).ready(function(){
 		designView.removeClass('design-view');
 		designView.removeClass('home-view');
 		designView.addClass('cart-view');
+		window.scrollTo(0,0);
 	});
 
 	$('.continue-shopping').click(function(){
@@ -152,6 +156,7 @@ $( document ).ready(function(){
 		removeItem = $(this).parent().parent();
 		removeCartItemId = removeItem.data('cartItemId');
 		$('#alert-wrapper').css('display', 'block');
+		goToByScroll($('#alert-wrapper')); 
 		updateTotal();
 		// $('#alert-wrapper').css('display', 'none')
 	});
@@ -600,4 +605,12 @@ function checkIfNumber(e){
 	if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
 		e.preventDefault();
 	}
+}
+
+function setCanvasHeight(){
+	if ($(window).width() < 1170) {
+		$('#deisgn-area').css('height', $(window).height());
+	};
+
+	console.log($(window).width());
 }
