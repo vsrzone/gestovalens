@@ -131,6 +131,10 @@ $( document ).ready(function(){
 		addToCart();
 		cartItemNo = cartItemNo + 1;
 		updateTotal();
+		$('.item-added').css('opacity', '1');
+		setTimeout(function(){ 
+			 $('.item-added').css('opacity', '0');
+		}, 2000);
 	});
 
 	//cart-input color change

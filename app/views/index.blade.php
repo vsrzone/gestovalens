@@ -7,8 +7,14 @@
 	<title>Gesto Valens</title>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="{{ url() }}/css/style.css">
+	<link rel="shortcut icon" href="{{ url() }}/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="{{ url() }}/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<div class="item-added">
+	<img src="{{ url() }}/images/cart_icon.png" width="50px" height="auto"/>
+	<p>One item added to cart</p>
+</div>
 <div id="alert-wrapper">
 	<div id="alert-box">
 		<div id="alert-content">
