@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ url() }}/css/style.css">
 	<link rel="shortcut icon" href="{{ url() }}/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="{{ url() }}/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="{{ url() }}/css/font-awesome.min.css">
 </head>
 <body>
 <div class="item-added">
@@ -27,10 +28,10 @@
 	<div id="logo-wrapper">
 		<ul id="logo-ul">
 			<a id="logo"><img src="images/logo.png" width="100%" height="100%" alt="Gesto Valens" title="Gesto Valens"></a>
-			<li><a class="menu-item" id="top-nav"><p class="nav-icon">H</p></a></li>
-			<li><a class="menu-item" id="left-nav"><p class="nav-icon" id="contact-page">C</p></a></li>
-			<li><a class="menu-item" id="bottom-nav"><p class="nav-icon" id="nav-facebook">F</p></a></li>
-			<li><a class="menu-item" id="right-nav"><p class="nav-icon check-out">C</p></a></li>
+			<li><a class="menu-item" id="top-nav"><p class="nav-icon"><i class="fa fa-home fa-lg"></i></p></a></li>
+			<li><a class="menu-item" id="left-nav"><p class="nav-icon" id="contact-page"><i class="fa fa-phone-square fa-lg"></i></p></a></li>
+			<li><a class="menu-item" id="bottom-nav"><p class="nav-icon" id="nav-facebook"><i class="fa fa-camera-retro fa-lg"></i></p></a></li>
+			<li><a class="menu-item" id="right-nav"><p class="nav-icon check-out"><i class="fa fa-cart-arrow-down fa-lg"></i></p></a></li>
 		</ul>
 	</div>
 	<div id="page-wrapper" class="home-view">
@@ -54,12 +55,14 @@
 			</div>
 			<div class="contact-details" id="contact-form-wrapper">
 				<div id="contact-form">
-					<input type="text" id="contact-name" class="input" placeholder="Name">
-					<input type="text" id="contact-company" class="input" placeholder="Company">
-					<input type="text" id="contact-email" class="input" placeholder="Email">
-					<input type="text" id="contact-phone" class="input" placeholder="Phone">
-					<textarea placeholder="Message" id="contact-message"></textarea>
-					<input type="submit" value="Send" class="button" id="contact-submit">
+					<form action="/send_mail" method="post">
+						<input type="text" id="contact-name" class="input" name="name" placeholder="Name">
+						<input type="text" id="contact-company" class="input" name="company" placeholder="Company">
+						<input type="text" id="contact-email" class="input" name="email" placeholder="Email">
+						<input type="text" id="contact-phone" class="input" name="phone" placeholder="Phone">
+						<textarea placeholder="Message" id="contact-message" name="message"></textarea>
+						<input type="submit" value="Send" class="button" id="contact-submit">
+					</form>
 				</div>
 			</div>
 		</div>
@@ -89,16 +92,16 @@
 							<div id="add-to-cart" class="button margin-t-10">add to cart</div>
 							<div id="check-out" class="button margin-t-10 check-out">check out</div>
 						</div>	
-					<div id="footer">
-						<div id="social-icons-row">
-							<a href="http://www.fb.me/gestovalens"><div class="social-icon" id="fb-icon"></div></a>
-							<div class="social-icon" id="twitter-icon"></div>
-						</div>
-						<div id="copyrights">designed by 
-							<a href="http://www.ingenslk.com/" target="_blank">
-								<span style="color: #6B6B6B">ingens</span>
-							</a>
-						</div>
+				</div>
+				<div id="footer">
+					<div id="social-icons-row">
+						<a href="http://www.fb.me/gestovalens"><div class="social-icon" id="fb-icon"></div></a>
+						<div class="social-icon" id="twitter-icon"></div>
+					</div>
+					<div id="copyrights">designed by 
+						<a href="http://www.ingenslk.com/" target="_blank">
+							<span style="color: #6B6B6B">ingens</span>
+						</a>
 					</div>
 				</div>
 			</div><!-- end of editing menu -->
