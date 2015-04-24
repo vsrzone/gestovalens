@@ -862,6 +862,21 @@ textarea {
    color: #fff;
 }
 
+.error::-webkit-input-placeholder { /* WebKit browsers */
+    color: #f00;
+}
+.error:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #f00;
+   opacity: 1;
+}
+.error::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #f00;
+   opacity: 1;
+}
+.error:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color: #f00;
+}
+
 #alert-wrapper{
 	height: 100%;
 	width: 100%;
@@ -939,6 +954,14 @@ textarea {
 	color: #F7931D;
 	text-align: left;
 	font-size: 14px;
+}
+
+#content-wrapper{
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden; 
 }
 
 @media (max-width: 1600px){

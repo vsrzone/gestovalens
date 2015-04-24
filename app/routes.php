@@ -20,6 +20,9 @@ Route::get('cart', function(){
 });
 
 Route::get('/send_email', function(){
+	echo 'sucess';
+	return;
+
 	$message = json_decode(Input::get('variables'),1);
 
 	$name = $message['name'];

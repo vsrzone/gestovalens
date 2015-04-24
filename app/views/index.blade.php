@@ -34,95 +34,97 @@
 			<li><a class="menu-item" id="right-nav" title="My Cart"><p class="nav-icon check-out"><i class="fa fa-cart-arrow-down fa-lg"></i></p></a></li>
 		</ul>
 	</div>
-	<div id="page-wrapper" class="home-view">
-		<div id="item-wrapper">
-			<div class="contact-details" id="contact-info-wrapper">
-				<div class="contact-desc">
-					<div class="contact-icon" id="contact-address"></div>
-					<p class="contact-info">19, 4th Lane,<br/>
-					Vidarshana Mawatha,<br/>
-					Galavilawaththa,<br/>
-					Homagama</p>
+	<div id="content-wrapper">
+		<div id="page-wrapper" class="home-view">
+			<div id="item-wrapper">
+				<div class="contact-details" id="contact-info-wrapper">
+					<div class="contact-desc">
+						<div class="contact-icon" id="contact-address"></div>
+						<p class="contact-info">19, 4th Lane,<br/>
+						Vidarshana Mawatha,<br/>
+						Galavilawaththa,<br/>
+						Homagama</p>
+					</div>
+					<div class="contact-desc">
+						<div class="contact-icon" id="contact-tel"></div>
+						<p class="contact-info"><!-- <img class="contact-icon" src="images/telephone_icon.png" width="20px" height="auto"> --> <a href="tel:+94774424634">077-4424634</a></p>
+					</div>
+					<div class="contact-desc">
+						<div class="contact-icon" id="contact-mail"></div>
+						<p class="contact-info">info@gestovalens.com</p>
+					</div>
 				</div>
-				<div class="contact-desc">
-					<div class="contact-icon" id="contact-tel"></div>
-					<p class="contact-info"><!-- <img class="contact-icon" src="images/telephone_icon.png" width="20px" height="auto"> --> <a href="tel:+94774424634">077-4424634</a></p>
-				</div>
-				<div class="contact-desc">
-					<div class="contact-icon" id="contact-mail"></div>
-					<p class="contact-info">info@gestovalens.com</p>
+				<div class="contact-details" id="contact-form-wrapper">
+					<div id="contact-form">
+						<form>
+							<input type="text" id="contact-name" class="input" name="name" placeholder="Name">
+							<input type="text" id="contact-company" class="input" name="company" placeholder="Company">
+							<input type="text" id="contact-email" class="input" name="email" placeholder="Email">
+							<input type="text" id="contact-phone" class="input" name="phone" placeholder="Phone">
+							<textarea placeholder="Message" id="contact-message" name="message" ></textarea>
+							<input type="button" value="Send" class="button" id="contact-submit" onClick="sendEmail()">
+						</form>
+					</div>
 				</div>
 			</div>
-			<div class="contact-details" id="contact-form-wrapper">
-				<div id="contact-form">
-					<form action="/send_mail" method="post">
-						<input type="text" id="contact-name" class="input" name="name" placeholder="Name">
-						<input type="text" id="contact-company" class="input" name="company" placeholder="Company">
-						<input type="text" id="contact-email" class="input" name="email" placeholder="Email">
-						<input type="text" id="contact-phone" class="input" name="phone" placeholder="Phone">
-						<textarea placeholder="Message" id="contact-message" name="message"></textarea>
-						<input type="submit" value="Send" class="button" id="contact-submit">
-					</form>
-				</div>
-			</div>
-		</div>
-		<div id="main-wrapper">
-			<div id="deisgn-area">
-				<canvas id="design-canvas"></canvas>
-			</div><!-- end of design area -->			
-			<div id="editing-menu">
-				<div id="editing-fixed">
-					<div id="gender-color-wrapper">
-						<div id="gender-selection-menu">
-							<div class="gender-icon" id="male-icon" title="male"></div>
-							<div class="gender-icon" id="female-icon" title="female"></div>
-						</div>	
-						<div id="color-selection-menu">
-							<div id="selection-menu-icons">
-								<div class="color-tab-icon" id="tshirt-color-tab" title="t-shirt color"></div>
-								<div class="color-tab-icon" id="design-color-tab" title="artwork color"></div>
-							</div>
-							<div id="color-wrapper">
+			<div id="main-wrapper">
+				<div id="deisgn-area">
+					<canvas id="design-canvas"></canvas>
+				</div><!-- end of design area -->			
+				<div id="editing-menu">
+					<div id="editing-fixed">
+						<div id="gender-color-wrapper">
+							<div id="gender-selection-menu">
+								<div class="gender-icon" id="male-icon" title="male"></div>
+								<div class="gender-icon" id="female-icon" title="female"></div>
+							</div>	
+							<div id="color-selection-menu">
+								<div id="selection-menu-icons">
+									<div class="color-tab-icon" id="tshirt-color-tab" title="t-shirt color"></div>
+									<div class="color-tab-icon" id="design-color-tab" title="artwork color"></div>
+								</div>
+								<div id="color-wrapper">
+								</div>
 							</div>
 						</div>
+							<div id="artworks-wrapper">
+							</div>
+							<div>
+								<div id="add-to-cart" class="button margin-t-10">add to cart</div>
+								<div id="check-out" class="button margin-t-10 check-out">check out</div>
+							</div>	
 					</div>
-						<div id="artworks-wrapper">
+					<div id="footer">
+						<div id="social-icons-row">
+							<a href="http://www.fb.me/gestovalens"><div class="social-icon" id="fb-icon"></div></a>
+							<div class="social-icon" id="twitter-icon"></div>
 						</div>
-						<div>
-							<div id="add-to-cart" class="button margin-t-10">add to cart</div>
-							<div id="check-out" class="button margin-t-10 check-out">check out</div>
-						</div>	
-				</div>
-				<div id="footer">
-					<div id="social-icons-row">
-						<a href="http://www.fb.me/gestovalens"><div class="social-icon" id="fb-icon"></div></a>
-						<div class="social-icon" id="twitter-icon"></div>
+						<div id="copyrights">© Gesto Valens<br/>Web Design and Development by 
+							<a href="http://www.ingenslk.com/" target="_blank">
+								<span style="color: #6B6B6B">Ingens</span>
+							</a>
+						</div>
 					</div>
-					<div id="copyrights">© Gesto Valens<br/>Web Design and Development by 
-						<a href="http://www.ingenslk.com/" target="_blank">
-							<span style="color: #6B6B6B">Ingens</span>
-						</a>
-					</div>
-				</div>
-			</div><!-- end of editing menu -->
-		</div><!-- end of main wrapper -->
-		<div id="cart-wrapper-a">
-			<div id="cart-wrapper">
-				<div id="cart-items">
-					<!-- <div class="item-wrapper"></div> -->
-				</div><!-- end of cart-items -->
-				<div id="cart-summary">
-					<p id="summary-title">Cart summary</p>
-					<hr/>
-					<p id="summary-total">Total: Rs. 00.00</p>
-					<p id="summary-qty">You have 0 items in your cart</p>
-					<div class="summary-detail"><input type="submit" value="Proceed to checkout" id="proceed-to-checkout" class="button"></div>
-					<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>	
-				</div><!-- end of cart-summary -->
-			</div><!-- end of cart-wrapper -->
-			
-		</div><!-- end of cart-wrapper-a -->
-	</div><!-- end of page wrapper -->
+				</div><!-- end of editing menu -->
+			</div><!-- end of main wrapper -->
+			<div id="cart-wrapper-a">
+				<div id="cart-wrapper">
+					<div id="cart-items">
+						<!-- <div class="item-wrapper"></div> -->
+					</div><!-- end of cart-items -->
+					<div id="cart-summary">
+						<p id="summary-title">Cart summary</p>
+						<hr/>
+						<p id="summary-total">Total: Rs. 00.00</p>
+						<p id="summary-qty">You have 0 items in your cart</p>
+						<div class="summary-detail"><input type="submit" value="Proceed to checkout" id="proceed-to-checkout" class="button"></div>
+						<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>	
+					</div><!-- end of cart-summary -->
+				</div><!-- end of cart-wrapper -->
+				
+			</div><!-- end of cart-wrapper-a -->
+		</div><!-- end of page wrapper -->
+	</div>
 </body>
 <script type="text/javascript">
 	var http_path = '{{ url() }}';

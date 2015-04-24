@@ -615,9 +615,70 @@ function setCanvasHeight(){
 	if ($(window).width() < 1170) {
 		$('#deisgn-area').css('height', $(window).height());
 	}
+	else if($(window).height() < 845){
+		$('#page-wrapper').css('min-height', 845);
+	}
 	else{
 		$('#deisgn-area').css('height', $(window).height());
 	}
 
 	console.log($(window).width());
+}
+
+function sendEmail(){
+	var email = {};
+	var error = false;
+	email.name = $('#contact-name').val();
+	email.company = $('#contact-company').val();
+	email.email = $('#contact-email').val();
+	email.phone = $('#contact-phone').val();
+	email.message = $('#contact-message').val();
+	
+	if( email.name.trim() == ''){
+		$('#contact-name').addClass('error');
+		error = true;
+	}else{
+		$('#contact-name').removeClass('error');
+	}
+
+	if( email.email.trim() == ''){
+		$('#contact-email').addClass('error');
+		error = true;
+	}else{
+		$('#contact-email').removeClass('error');
+	}
+
+	if( email.phone.trim() == ''){
+		$('#contact-phone').addClass('error');
+		error = true;
+	}else{
+		$('#contact-phone').removeClass('error');
+	}
+
+	if( email.message.trim() == ''){
+		$('#contact-message').addClass('error');
+		error = true;
+	}else{
+		$('#contact-message').removeClass('error');
+	}
+
+	if(!error){
+		sendRequestToSystem('/send_email', email, function(res){ alert(res) })
+	}
+
+}
+
+function sendRequestToSystem(url,variables,callback){
+	var url = http_path+url;
+	var var_string = JSON.stringify(variables);
+	var request_url = url +'?variables=' + var_string;
+
+	var xmlHttp = new XMLHttpRequest(); 
+	xmlHttp.onreadystatechange = function(){
+	   if (xmlHttp.readyState==4 && xmlHttp.status==200){
+	       callback(xmlHttp.responseText);
+	   }
+	};
+	xmlHttp.open( "GET", request_url, true );
+	xmlHttp.send();
 }
