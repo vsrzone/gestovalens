@@ -28,10 +28,10 @@
 	<div id="logo-wrapper">
 		<ul id="logo-ul">
 			<a id="logo"><img src="images/logo.png" width="100%" height="100%" alt="Gesto Valens" title="Gesto Valens"></a>
-			<li><a class="menu-item" id="top-nav"><p class="nav-icon"><i class="fa fa-home fa-lg"></i></p></a></li>
-			<li><a class="menu-item" id="left-nav"><p class="nav-icon" id="contact-page"><i class="fa fa-phone-square fa-lg"></i></p></a></li>
-			<li><a class="menu-item" id="bottom-nav"><p class="nav-icon" id="nav-facebook"><i class="fa fa-camera-retro fa-lg"></i></p></a></li>
-			<li><a class="menu-item" id="right-nav"><p class="nav-icon check-out"><i class="fa fa-cart-arrow-down fa-lg"></i></p></a></li>
+			<li><a class="menu-item" id="top-nav" title="Home"><p class="nav-icon"><i class="fa fa-home fa-lg"></i></p></a></li>
+			<li><a class="menu-item" id="left-nav" title="Contact"><p class="nav-icon" id="contact-page"><i class="fa fa-phone-square fa-lg"></i></p></a></li>
+			<li><a class="menu-item" id="bottom-nav" title="Gallery"><p class="nav-icon" id="nav-facebook"><i class="fa fa-camera-retro fa-lg"></i></p></a></li>
+			<li><a class="menu-item" id="right-nav" title="My Cart"><p class="nav-icon check-out"><i class="fa fa-cart-arrow-down fa-lg"></i></p></a></li>
 		</ul>
 	</div>
 	<div id="page-wrapper" class="home-view">
@@ -98,9 +98,9 @@
 						<a href="http://www.fb.me/gestovalens"><div class="social-icon" id="fb-icon"></div></a>
 						<div class="social-icon" id="twitter-icon"></div>
 					</div>
-					<div id="copyrights">designed by 
+					<div id="copyrights">© Gesto Valens<br/>Web Design and Development by 
 						<a href="http://www.ingenslk.com/" target="_blank">
-							<span style="color: #6B6B6B">ingens</span>
+							<span style="color: #6B6B6B">Ingens</span>
 						</a>
 					</div>
 				</div>

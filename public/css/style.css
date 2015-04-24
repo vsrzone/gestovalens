@@ -271,7 +271,7 @@ a, a:visited {
 	text-align: center;
 	position: relative;
 	cursor: pointer;
-	color: #616161;
+	color: #FFF;
 	background-color: #cc7b16;
 }
 
@@ -281,6 +281,7 @@ a, a:visited {
 
 #footer{
 	margin-top: 40px;
+	margin-bottom: 15px;
 	width: 100%;
 	position: absolute;
 	right: 15px;
@@ -322,7 +323,7 @@ a, a:visited {
 
 #copyrights{
 	width: 100%;
-	color: #E8E8E8;
+	color: #FFF;
 	font-size: 12px;
 	text-align: right;
 	margin-top: 5px;
@@ -422,6 +423,7 @@ button:focus {
 
 .item-title{
 	height: auto;
+	min-width: 74px;
 	width: 100%;
 	position: relative;
 	font-size: 16px;
@@ -1162,6 +1164,11 @@ textarea {
 
 	.contact-details{
 		margin-top: 115px;
+	}
+	
+	.item-price-container{
+		width: 100%;
+		text-align: center;
 	}
 }
 
