@@ -562,6 +562,8 @@ text-decoration: underline;
 #logo-wrapper{
 	height: 150px;
 	width: 150px;
+	left: 5px;
+	top: 5px;
 	position: fixed;
 	z-index: 9;
 	overflow: hidden;
@@ -942,12 +944,12 @@ textarea {
 	left: -250px;
 	margin: 10px;
 	color: #fff;
-	background-color: #E8E8E8;
+	background-color: #CC7B16;
 	padding: 10px;
 	z-index: 100;
-	opacity: 1;
+	opacity: 0;
+	background-image: url();
 	transition: all 0.5s ease-in-out;
-	transition: opacity 0.5s ease-in-out;
 }
 
 .item-added img{
@@ -998,6 +1000,10 @@ textarea {
 
 	body{
 		background-color: #f7931d;
+	}
+
+	.item-added{
+		background-color: #e8e8e8
 	}
 	
 	#page-wrapper{
