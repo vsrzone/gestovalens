@@ -20,16 +20,17 @@ Route::get('cart', function(){
 });
 
 Route::get('/send_email', function(){
-	echo 'sucess';
-	return;
+	// echo 'sucess';
+	// return;
 
 	$message = json_decode(Input::get('variables'),1);
 
 	$name = $message['name'];
 	$company = $message['company'];
 	$email = $message['email'];
-	$telephone = $message['telephone'];
-	$msg = $message['message'];
+	$phone = $message['phone'];
+	$message = $message['message'];
+
 
 	if($email == '' || $msg == ''){
 		echo '{"status":400,message:"failed to send message"}';	
@@ -37,17 +38,18 @@ Route::get('/send_email', function(){
 	}
 
 	$body = "<h4>name:</h4><p>$name</p>
-			<h4>address:</h4><p>$email</p>
-			<h4>telephone:</h4><p>$telephone</p>
-			<h4>email:</h4><p>$msg</p>";
+			<h4>company:</h4><p>$company</p>
+			<h4>email:</h4><p>$email</p>
+			<h4>telephone:</h4><p>$phone</p>
+			<h4>message:</h4><p>$message</p>";
 			
 	
-	$headers = "From: Dplus Contact<contact@dplusarchitects.com> \r\n";
+	$headers = "From: Gesto Valens Contact<contact@gestovalens.com> \r\n";
 	$headers .= "Content-type: text/html; charset=\"UTF-8\"; format=flowed \r\n";
 	$headers .= "Mime-Version: 1.0 \r\n"; 
 	$headers .= "Content-Transfer-Encoding: quoted-printable \r\n";
 	
-	$result = mail("vikumsri@gmail.com",'Dplus Contact',$body,$headers);
+	$result = mail("vikumsri@gmail.com",'Gesto Valens Contact',$body,$headers);
 	
 	
 	if($result){

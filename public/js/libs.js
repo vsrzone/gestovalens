@@ -663,7 +663,23 @@ function sendEmail(){
 	}
 
 	if(!error){
-		sendRequestToSystem('/send_email', email, function(res){ alert(res) })
+		sendRequestToSystem('/send_email', email, function(res){
+			var result = JSON.parse(res);
+			if(result.status == 200){
+				$('#contact-name').val('');
+				$('#contact-company').val('');
+				$('#contact-email').val('');
+				$('#contact-phone').val('');
+				$('#contact-message').val('');
+
+				$('#submit-button').val('sent!');
+				setTimeout(function(){
+					$('#submit-button').val('send');
+				}, 5000);
+			}else{
+				alert('sending error!');
+			}
+		});
 	}
 
 }

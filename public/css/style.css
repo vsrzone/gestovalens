@@ -863,20 +863,24 @@ textarea {
 }
 
 .error::-webkit-input-placeholder { /* WebKit browsers */
-    color: #f00;
+    color: #C31313;
 }
 .error:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: #f00;
+   color: #C31313;
    opacity: 1;
 }
 .error::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: #f00;
+   color: #C31313;
    opacity: 1;
 }
 .error:-ms-input-placeholder { /* Internet Explorer 10+ */
-   color: #f00;
+   color: #C31313;
 }
 
+/*.error{
+	background-color: #fff;
+}
+*/
 #alert-wrapper{
 	height: 100%;
 	width: 100%;
