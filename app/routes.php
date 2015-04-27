@@ -32,7 +32,7 @@ Route::get('/send_email', function(){
 	$message = $message['message'];
 
 
-	if($email == '' || $msg == ''){
+	if($email == '' || $message == ''){
 		echo '{"status":400,message:"failed to send message"}';	
 		return;
 	}
