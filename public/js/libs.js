@@ -131,8 +131,10 @@ $( document ).ready(function(){
 		addToCart();
 		cartItemNo = cartItemNo + 1;
 		updateTotal();
+		$('.item-added').css('left', '0px');
 		$('.item-added').css('opacity', '1');
 		setTimeout(function(){ 
+			 $('.item-added').css('left', '-250px');
 			 $('.item-added').css('opacity', '0');
 		}, 2000);
 	});
@@ -621,8 +623,6 @@ function setCanvasHeight(){
 	else{
 		$('#deisgn-area').css('height', $(window).height());
 	}
-
-	console.log($(window).width());
 }
 
 function sendEmail(){
@@ -672,9 +672,9 @@ function sendEmail(){
 				$('#contact-phone').val('');
 				$('#contact-message').val('');
 
-				$('#submit-button').val('sent!');
+				$('#contact-submit').val('sent!');
 				setTimeout(function(){
-					$('#submit-button').val('send');
+					$('#contact-submit').val('send');
 				}, 5000);
 			}else{
 				alert('sending error!');
