@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Gesto Valens</title>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="{{ url() }}/css/style.css">
 	<link rel="shortcut icon" href="{{ url() }}/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="{{ url() }}/favicon.ico" type="image/x-icon">
@@ -25,15 +26,16 @@
 		</div>
 	</div>
 </div>
-	<div id="logo-wrapper">
-		<ul id="logo-ul">
-			<a id="logo"><img src="images/logo.png" width="100%" height="100%" alt="Gesto Valens" title="Gesto Valens"></a>
-			<li><a class="menu-item" id="top-nav" title="Home"><p class="nav-icon"><i class="fa fa-home fa-lg"></i></p></a></li>
-			<li><a class="menu-item" id="left-nav" title="Contact"><p class="nav-icon" id="contact-page"><i class="fa fa-phone-square fa-lg"></i></p></a></li>
-			<li><a class="menu-item" id="bottom-nav" title="Gallery"><p class="nav-icon" id="nav-facebook"><i class="fa fa-camera-retro fa-lg"></i></p></a></li>
-			<li><a class="menu-item" id="right-nav" title="My Cart"><p class="nav-icon check-out"><i class="fa fa-cart-arrow-down fa-lg"></i></p></a></li>
-		</ul>
-	</div>
+<span id="overlay-logo" class="overlay left init-pos">Site Navigation</span>
+<div id="logo-wrapper">
+	<ul id="logo-ul">
+		<a id="logo"><img src="{{ url() }}/images/logo.png" width="100%" height="100%" alt="Gesto Valens" title="Gesto Valens"></a>
+		<li><a class="menu-item" id="top-nav" title="Home"><p class="nav-icon"><i class="fa fa-home fa-lg"></i></p></a></li>
+		<li><a class="menu-item" id="left-nav" title="Contact"><p class="nav-icon" id="contact-page"><i class="fa fa-phone-square fa-lg"></i></p></a></li>
+		<li><a class="menu-item" id="bottom-nav" title="Gallery"><p class="nav-icon" id="nav-facebook"><i class="fa fa-camera-retro fa-lg"></i></p></a></li>
+		<li><a class="menu-item" id="right-nav" title="My Cart"><p class="nav-icon check-out"><i class="fa fa-cart-arrow-down fa-lg"></i></p></a></li>
+	</ul>
+</div>
 	<div id="content-wrapper">
 		<div id="page-wrapper" class="home-view">
 			<div id="item-wrapper">
@@ -75,10 +77,12 @@
 					<div id="editing-fixed">
 						<div id="gender-color-wrapper">
 							<div id="gender-selection-menu">
+								<span id="overlay-gender" class="overlay right init-pos">Select Gender</span>
 								<div class="gender-icon" id="male-icon" title="male"></div>
 								<div class="gender-icon" id="female-icon" title="female"></div>
 							</div>	
 							<div id="color-selection-menu">
+								<span id="overlay-type" class="overlay right init-pos">Select Tshirt or Logo</span>
 								<div id="selection-menu-icons">
 									<div class="color-tab-icon" id="tshirt-color-tab" title="t-shirt color"></div>
 									<div class="color-tab-icon" id="design-color-tab" title="artwork color"></div>
@@ -88,6 +92,7 @@
 							</div>
 						</div>
 							<div id="artworks-wrapper">
+								<span id="overlay-artwork" class="overlay right init-pos">Select Logo</span>
 							</div>
 							<div>
 								<div id="add-to-cart" class="button margin-t-10">add to cart</div>
@@ -117,8 +122,22 @@
 						<hr/>
 						<p id="summary-total">Total: Rs. 00.00</p>
 						<p id="summary-qty">You have 0 items in your cart</p>
-						<div class="summary-detail"><input type="submit" value="Proceed to checkout" id="proceed-to-checkout" class="button"></div>
+						<div class="summary-detail">
+							
+							<!-- {{ Form::open(array('url'=>'cart/checkout'))}} -->
+								<input type="submit" value="Proceed to checkout" id="proceed-to-checkout" class="button">
+							<!-- {{ Form::hidden('order_details', '', array('id'=>'order_details')) }} -->
+							<!-- {{ Form::close()}} -->
+						</div>
 						<div class="summary-detail"><div class="continue-shopping button">Continue shopping</div></div>	
+						<div id="checkout-cart">
+							<p>Please fill the below infomation to proceed with your order</p>
+							<input id="checkout-name" name="checkout-name" class="input" placeholder="Name"></input>
+							<input id="checkout-phone" name="checkout-phone" class="input" placeholder="Phone"></input>
+							<input id="checkout-address" name="checkout-address" class="input" placeholder="Address"></input>
+							<input id="checkout-email" name="checkout-email" class="input" placeholder="Email"></input>
+							<input type="button" value="Checkout" id="checkout-submit" class="button" onClick="sendInfo()">
+						</div>
 					</div><!-- end of cart-summary -->
 				</div><!-- end of cart-wrapper -->
 				

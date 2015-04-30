@@ -15,6 +15,7 @@ a, a:visited {
 #page-wrapper{
 	height: 100vh;
 	width: 100%;
+	min-height: 845px;
 	font-size: 0;
 	letter-spacing: 0;
 	position: relative;
@@ -201,6 +202,10 @@ a, a:visited {
 	transition: opacity 0.3s ease-in-out;
 }
 */
+
+#artworks-wrapper{
+	position: relative;
+}
 
 .sample-designs-row{
 	width: 100%;
@@ -797,7 +802,6 @@ ul#logo-ul{
 	border: 4px solid #F7941E;
 	color: #fff;
 	background-color: #CC7B16;
-	border-left: 0;
 }
 
 #contact-message{
@@ -809,7 +813,6 @@ ul#logo-ul{
 	border: 4px solid #F7941E;
 	color: #fff;
 	background-color: #CC7B16;
-	border-left: 0;
 	font-family:'Lato', sans-serif;
 }
 
@@ -944,7 +947,7 @@ textarea {
 	left: -250px;
 	margin: 10px;
 	color: #fff;
-	background-color: #CC7B16;
+	background-color: #f7931d;
 	padding: 10px;
 	z-index: 100;
 	opacity: 0;
@@ -958,7 +961,7 @@ textarea {
 }
 
 .item-added p{
-	color: #F7931D;
+	color: #fff;
 	text-align: left;
 	font-size: 14px;
 }
@@ -970,6 +973,108 @@ textarea {
 	overflow-y: auto;
 	overflow-x: hidden; 
 }
+
+/*
+
+---------------------------------------------------------------------------
+							checkout cart page
+---------------------------------------------------------------------------
+
+*/
+
+
+#checkout-cart{
+	width: 100%;
+	position: relative;
+	margin: 0 auto;
+	padding: 20px;
+	box-sizing: border-box;
+	display: none;
+}
+
+#checkout-cart input[type=button]{
+	width: 150px;
+	height: 40px;
+	border: none;
+}
+
+#checkout-cart p{
+	color: #fff;
+	font-size: 13px;
+}
+
+
+/*
+
+---------------------------------------------------------------------------
+								overlays
+---------------------------------------------------------------------------
+
+*/
+
+.overlay{
+	position: absolute;
+	font-size: 18px;
+	z-index: 100;
+	left: 0;
+	top: 0;
+	font-family: 'Montez', cursive;
+	font-weight: 400;
+	max-width: 200px;
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+}
+
+.overlay.left{
+	padding: 0 0 50px 50px;
+	background-image: url(../images/overlay_left.png);
+	background-position: bottom left;
+	background-repeat: no-repeat;
+}
+
+.overlay.right{
+	padding: 0 50px 50px 0;
+	background-image: url(../images/overlay_right.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
+.overlay.init-pos{
+	top: -60px;
+}
+
+#overlay-type.init-pos{
+	top: -60px;
+}
+
+#overlay-artwork.init-pos{
+	top: -60px;
+}
+
+#overlay-logo{
+	left: 100px;
+}
+
+#overlay-gender{
+	left: 0px;
+}
+
+#overlay-type{
+	left: -130px;
+	top: -55px;
+}
+
+#overlay-artwork{
+	left: -80px;
+	top: 0;
+}
+/*
+
+---------------------------------------------------------------------------
+							media quaries
+---------------------------------------------------------------------------
+
+*/
 
 @media (max-width: 1600px){
 	.item-wrapper{
@@ -1003,7 +1108,11 @@ textarea {
 	}
 
 	.item-added{
-		background-color: #e8e8e8
+		background-color: #CC7B16;
+	}
+
+	.item-added p{
+		color: #fff;
 	}
 	
 	#page-wrapper{

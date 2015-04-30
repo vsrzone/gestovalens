@@ -12,7 +12,14 @@ class CreateImagesTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('orders', function($table){
+			$table->increments('id');
+			$table->integer('artwork_id');
+			$table->string('artwork_color');
+			$table->integer('sizes');
+			$table->string('tshirt_color');
+			$table->timestamps();
+		});
 	}
 
 	/**
@@ -22,7 +29,7 @@ class CreateImagesTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('orders');
 	}
 
 }

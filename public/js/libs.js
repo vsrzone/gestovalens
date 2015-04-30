@@ -40,6 +40,10 @@ var cartItemNo = 0;
 var removeItem;
 var removeCartItemId;
 
+// total
+
+var totalQuantity = 0;
+
 $(window).resize(function() { 
 	setCanvasHeight();
 	initDesignCanvas();
@@ -208,6 +212,41 @@ $( document ).ready(function(){
 	$(document).on('keydown', '#contact-phone', function(e){
 		checkIfNumber(e);
 	});
+
+	// proceed to checkout
+	// $('#proceed-to-checkout').click(function(){
+	// 	var order_details = [];
+	// 	for (var i = 0; i < cartItems.length; i++) {
+	// 		order_details[i] = {'logoColor': cartItems[i].logoColor,
+	// 						'artwork_name':artworks_name[cartItems[i].id],
+	// 						'tshirtColor':cartItems[i].tshirtColor,
+	// 						'sizesQuantity':cartItems[i].sizesQuantity
+	// 		};
+	// 	}
+	// 	console.log(order_details);
+
+	// 	$('#order_details').val(JSON.stringify(order_details));
+		
+	// });
+
+	$('#proceed-to-checkout').click(function(){
+		if (totalQuantity >= 1) {
+			$('#checkout-cart').css('display', 'block');
+		}else{
+			alert("Cannot proceed with 0 items. You may add one or more items");
+		}
+	});
+
+
+	// hover instructions
+
+	$('.overlay').css('opacity', '1');
+	$('.overlay').removeClass('init-pos');
+
+	setTimeout(function(){
+		$('.overlay').css('opacity', '0');
+		$('.overlay').addClass('init-pos');
+	}, 15000);
 
 });
 
@@ -443,7 +482,7 @@ var artworks = [
 			}
 	];
 
-
+var artworks_name = ['I am danger', 'Sri Lanka Cricket', 'Sons of Anarchy', 'Winter is Coming'];
 
 function generateArtworks(){
 	var container = $('#artworks-wrapper');
@@ -553,6 +592,7 @@ function updateTotal(){
 		for (var j = 0; j < cartItems[i]['sizesQuantity'].length; j++) {
 			total += 950*cartItems[i]['sizesQuantity'][j];
 			numberOfItems += cartItems[i]['sizesQuantity'][j];
+			totalQuantity = numberOfItems;
 			if(isNaN(total)){
 				total = 0;
 			}
@@ -615,12 +655,6 @@ function checkIfNumber(e){
 
 function setCanvasHeight(){
 	if ($(window).width() < 1170) {
-		$('#deisgn-area').css('height', $(window).height());
-	}
-	else if($(window).height() < 845){
-		$('#page-wrapper').css('min-height', 845);
-	}
-	else{
 		$('#deisgn-area').css('height', $(window).height());
 	}
 }
@@ -687,6 +721,7 @@ function sendEmail(){
 function sendRequestToSystem(url,variables,callback){
 	var url = http_path+url;
 	var var_string = JSON.stringify(variables);
+	var_string = encodeURIComponent(var_string);
 	var request_url = url +'?variables=' + var_string;
 
 	var xmlHttp = new XMLHttpRequest(); 
@@ -697,4 +732,76 @@ function sendRequestToSystem(url,variables,callback){
 	};
 	xmlHttp.open( "GET", request_url, true );
 	xmlHttp.send();
+}
+
+function sendInfo(){
+	var checkoutInfo = {};
+	var error = false;
+	checkoutInfo.name = $('#checkout-name').val();
+	checkoutInfo.phone = $('#checkout-phone').val();
+	checkoutInfo.address = $('#checkout-address').val();
+	checkoutInfo.email = $('#checkout-email').val();
+	checkoutInfo.displayTotal = $('#summary-total').text();
+
+	var order_details = [];
+		for (var i = 0; i < cartItems.length; i++) {
+			order_details[i] = {'logoColor': cartItems[i].logoColor,
+							'artwork_name':artworks_name[cartItems[i].id],
+							'tshirtColor':cartItems[i].tshirtColor,
+							'sizesQuantity':cartItems[i].sizesQuantity
+			};
+		}
+
+	checkoutInfo.tshirtArray = order_details;
+
+	console.log(checkoutInfo.tshirtArray);
+
+	if( checkoutInfo.name.trim() == ''){
+		$('#checkout-name').addClass('error');
+		error = true;
+	}else{
+		$('#checkout-name').removeClass('error');
+	}
+
+	if( checkoutInfo.phone.trim() == ''){
+		$('#checkout-phone').addClass('error');
+		error = true;
+	}else{
+		$('#checkout-phone').removeClass('error');
+	}
+
+	if( checkoutInfo.address.trim() == ''){
+		$('#checkout-address').addClass('error');
+		error = true;
+	}else{
+		$('#checkout-address').removeClass('error');
+	}
+
+	if( checkoutInfo.email.trim() == ''){
+		$('#checkout-email').addClass('error');
+		error = true;
+	}else{
+		$('#checkout-email').removeClass('error');
+	}
+
+	if(!error){
+		sendRequestToSystem('/checkout', checkoutInfo, function(res){
+			var result = JSON.parse(res);
+			console.log(result);
+			if(result.status == 200){
+				$('#checkout-name').val('');
+				$('#checkout-phone').val('');
+				$('#checkout-address').val('');
+				$('#checkout-email').val('');
+
+				$('#checkout-submit').val('Order Submitted!');
+				setTimeout(function(){
+					cartItems = [];
+					$('#checkout-submit').val('Checkout');
+				}, 5000);
+			}else{
+				alert('sending error!');
+			}
+		});
+	}
 }
