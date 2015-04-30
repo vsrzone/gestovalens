@@ -44,6 +44,12 @@ Route::get('/checkout',  function(){
 			<h4>Order:</h4>";
 	$sizes = ["Small", "Medium", "Large", "XL"];
 	for ($i=0; $i < count($tshirtArray); $i++) {
+		for ($j=0; $j < count($tshirtArray[$i]['sizesQuantity']); $j++) {
+			$quantity += $tshirtArray[$i]['sizesQuantity'][$j];
+			if ($quantity == 0) {
+				continue;
+			}
+		}
 		$body .="<h6>Tshirt $i:</h6>";
 		$body .=$tshirtArray[$i]['artwork_name'];
 		$body .="<h6>T-Shirt artwork Colour:</h6>";
@@ -51,8 +57,11 @@ Route::get('/checkout',  function(){
 		$body .="<h6>T-Shirt Colour:</h6>";
 		$body .=$tshirtArray[$i]['tshirtColor'];
 		for ($j=0; $j < count($tshirtArray[$i]['sizesQuantity']); $j++) {
-			$body .="<h6>".$sizes[$j].":</h6>";
-			$body .=$tshirtArray[$i]['sizesQuantity'][$j];
+			if ($tshirtArray[$i]['sizesQuantity'][$j] == 0) {
+				continue;
+			}
+			$body .="<h6>".$sizes[$j].":";
+			$body .=$tshirtArray[$i]['sizesQuantity'][$j]."</h6>";
 		}
 		$body .="<br/>";
 	}
