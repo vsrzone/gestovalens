@@ -796,8 +796,8 @@ function sendInfo(){
 
 				$('#checkout-submit').val('Order Submitted!');
 				setTimeout(function(){
-					cartItems = [];
 					$('#cart-items').html('');
+					cartItems = [];
 					$('#checkout-submit').val('Checkout');
 				}, 5000);
 			}else{

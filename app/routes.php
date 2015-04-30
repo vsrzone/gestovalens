@@ -44,12 +44,14 @@ Route::get('/checkout',  function(){
 			<h4>Order:</h4>";
 	$sizes = ["Small", "Medium", "Large", "XL"];
 	for ($i=0; $i < count($tshirtArray); $i++) {
+		$temp_qty = 0;
 		for ($j=0; $j < count($tshirtArray[$i]['sizesQuantity']); $j++) {
-			$quantity += $tshirtArray[$i]['sizesQuantity'][$j];
-			if ($quantity == 0) {
+			$temp_qty += $tshirtArray[$i]['sizesQuantity'][$j];
+
+		}
+			if ($temp_qty == 0) {
 				continue;
 			}
-		}
 		$body .="<h6>Tshirt $i:</h6>";
 		$body .=$tshirtArray[$i]['artwork_name'];
 		$body .="<h6>T-Shirt artwork Colour:</h6>";
