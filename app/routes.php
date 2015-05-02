@@ -37,45 +37,45 @@ Route::get('/checkout',  function(){
 	$total = $quantity*950;
 
 	//email order to order@gestovalens.com
-	// $body = "<h4>name:</h4><p>$name</p>
-	// 		<h4>phone:</h4><p>$phone</p>
-	// 		<h4>email:</h4><p>$email</p>
-	// 		<h4>address:</h4><p>$address</p>
-	// 		<h4>Order:</h4>";
-	// $sizes = ["Small", "Medium", "Large", "XL"];
-	// for ($i=0; $i < count($tshirtArray); $i++) {
-	// 	$temp_qty = 0;
-	// 	for ($j=0; $j < count($tshirtArray[$i]['sizesQuantity']); $j++) {
-	// 		$temp_qty += $tshirtArray[$i]['sizesQuantity'][$j];
+	$body = "<h4>name:</h4><p>$name</p>
+			<h4>phone:</h4><p>$phone</p>
+			<h4>email:</h4><p>$email</p>
+			<h4>address:</h4><p>$address</p>
+			<h4>Order:</h4>";
+	$sizes = ["Small", "Medium", "Large", "XL"];
+	for ($i=0; $i < count($tshirtArray); $i++) {
+		$temp_qty = 0;
+		for ($j=0; $j < count($tshirtArray[$i]['sizesQuantity']); $j++) {
+			$temp_qty += $tshirtArray[$i]['sizesQuantity'][$j];
 
-	// 	}
-	// 		if ($temp_qty == 0) {
-	// 			continue;
-	// 		}
-	// 	$body .="<h6>Tshirt $i:</h6>";
-	// 	$body .=$tshirtArray[$i]['artwork_name'];
-	// 	$body .="<h6>T-Shirt artwork Colour:</h6>";
-	// 	$body .=$tshirtArray[$i]['logoColor'];
-	// 	$body .="<h6>T-Shirt Colour:</h6>";
-	// 	$body .=$tshirtArray[$i]['tshirtColor'];
-	// 	for ($j=0; $j < count($tshirtArray[$i]['sizesQuantity']); $j++) {
-	// 		if ($tshirtArray[$i]['sizesQuantity'][$j] == 0) {
-	// 			continue;
-	// 		}
-	// 		$body .="<h6>".$sizes[$j].":";
-	// 		$body .=$tshirtArray[$i]['sizesQuantity'][$j]."</h6>";
-	// 	}
-	// 	$body .="<br/>";
-	// }
+		}
+			if ($temp_qty == 0) {
+				continue;
+			}
+		$body .="<h6>Tshirt $i:</h6>";
+		$body .=$tshirtArray[$i]['artwork_name'];
+		$body .="<h6>T-Shirt artwork Colour:</h6>";
+		$body .=$tshirtArray[$i]['logoColor'];
+		$body .="<h6>T-Shirt Colour:</h6>";
+		$body .=$tshirtArray[$i]['tshirtColor'];
+		for ($j=0; $j < count($tshirtArray[$i]['sizesQuantity']); $j++) {
+			if ($tshirtArray[$i]['sizesQuantity'][$j] == 0) {
+				continue;
+			}
+			$body .="<h6>".$sizes[$j].":";
+			$body .=$tshirtArray[$i]['sizesQuantity'][$j]."</h6>";
+		}
+		$body .="<br/>";
+	}
 	
-	// $headers = "From: Gesto Valens Orders<order@gestovalens.com> \r\n";
-	// $headers .= "Content-type: text/html; charset=\"UTF-8\"; format=flowed \r\n";
-	// $headers .= "Mime-Version: 1.0 \r\n"; 
-	// $headers .= "Content-Transfer-Encoding: quoted-printable \r\n";
+	$headers = "From: Gesto Valens Orders<order@gestovalens.com> \r\n";
+	$headers .= "Content-type: text/html; charset=\"UTF-8\"; format=flowed \r\n";
+	$headers .= "Mime-Version: 1.0 \r\n"; 
+	$headers .= "Content-Transfer-Encoding: quoted-printable \r\n";
 	
-	// $result = mail("vikumsri@gmail.com",'Gesto Valens Order',$body,$headers);
-	//if ($quantity != 0 && $result) {
-	if ($quantity != 0) {
+	$result = mail("vikumsri@gmail.com",'Gesto Valens Order',$body,$headers);
+	if ($quantity != 0 && $result) {
+	//if ($quantity != 0) {
 		$response = array();
 		$response['total'] = $total;
 		$response['status'] = '200';
