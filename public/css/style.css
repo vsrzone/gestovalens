@@ -1021,7 +1021,7 @@ textarea {
 	font-family: 'Montez', cursive;
 	font-weight: 400;
 	max-width: 200px;
-	opacity: 0;
+	opacity: 1;
 	transition: all 0.3s ease-in-out;
 }
 
@@ -1041,6 +1041,7 @@ textarea {
 
 .overlay.init-pos{
 	top: -60px;
+	opacity: 0;
 }
 
 #overlay-type.init-pos{
@@ -1105,6 +1106,10 @@ textarea {
 
 	body{
 		background-color: #f7931d;
+	}
+
+	#overlay-gender{
+		top: -48px;
 	}
 
 	.item-added{
@@ -1285,6 +1290,10 @@ textarea {
 
 	#artworks-wrapper{
 		min-width: 400px;
+	}
+
+	#overlay-artwork{
+		left: 0px;
 	}
 }
 

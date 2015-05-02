@@ -99,6 +99,14 @@ $( document ).ready(function(){
 		generateStyling();
 	});
 
+	// navigation 
+
+	$('#top-nav').click(function(){
+		var designView = $('#page-wrapper');
+		designView.removeClass('cart-view');
+		designView.removeClass('design-view');
+		designView.addClass('home-view');
+	});
 
 	$('#contact-page').click(function(){
 		var designView = $('#page-wrapper');
@@ -240,14 +248,28 @@ $( document ).ready(function(){
 
 	// hover instructions
 
-	$('.overlay').css('opacity', '1');
 	$('.overlay').removeClass('init-pos');
 
-	setTimeout(function(){
-		$('.overlay').css('opacity', '0');
-		$('.overlay').addClass('init-pos');
-	}, 15000);
+	// setTimeout(function(){
+	// 	$('.overlay').addClass('init-pos');
+	// }, 15000);
 
+
+	$('#logo-wrapper').click(function(){
+		$('#overlay-logo').addClass('init-pos');
+	});
+
+	$('.gender-icon').click(function(){
+		$('#overlay-gender').addClass('init-pos');
+	});
+
+	$('.color-tab-icon').click(function(){
+		$('#overlay-type').addClass('init-pos');
+	});
+
+	$(document).on('click', '.artwork-wrapper', function(){
+		$('#overlay-artwork').addClass('init-pos');
+	});
 });
 
 // genedate active elements css
@@ -588,22 +610,28 @@ function updateTotal(){
 	var total = 0;
 	var numberOfItems = 0;
 	var i;
-	for (i = 0; i < cartItems.length; i++) {
-		for (var j = 0; j < cartItems[i]['sizesQuantity'].length; j++) {
-			total += 950*cartItems[i]['sizesQuantity'][j];
-			numberOfItems += cartItems[i]['sizesQuantity'][j];
-			totalQuantity = numberOfItems;
-			if(isNaN(total)){
-				total = 0;
+	if (cartItems.length == 0) {
+		$('#summary-total').text('Total: Rs.'+total+'.00');
+		$('#summary-qty').text('('+numberOfItems+' items )');
+	}else{
+		for (i = 0; i < cartItems.length; i++) {
+			for (var j = 0; j < cartItems[i]['sizesQuantity'].length; j++) {
+				total += 950*cartItems[i]['sizesQuantity'][j];
+				numberOfItems += cartItems[i]['sizesQuantity'][j];
+				totalQuantity = numberOfItems;
+				if(isNaN(total)){
+					total = 0;
+				}
+				$('#summary-total').text('Total: Rs.'+total+'.00');
+				if (numberOfItems == 1) {
+					$('#summary-qty').text('('+numberOfItems+' item )');
+				}else{
+					$('#summary-qty').text('('+numberOfItems+' items )');
+				}
 			}
-			$('#summary-total').text('Total: Rs.'+total+'.00');
-			if (numberOfItems == 1) {
-				$('#summary-qty').text('('+numberOfItems+' item )');
-			}else{
-				$('#summary-qty').text('('+numberOfItems+' items )');
-			}
-		}
-	};
+		};
+	}
+	
 }
 
 function updateQuantity(cartItemId, checkout_item){
@@ -796,8 +824,13 @@ function sendInfo(){
 
 				$('#checkout-submit').val('Order Submitted!');
 				setTimeout(function(){
+					$('#checkout-cart').css('display', 'none');
 					$('#cart-items').html('');
 					cartItems = [];
+					cartItems.length = 0;
+					cartItemNo = 0;
+					totalQuantity = 0;
+					updateTotal();
 					$('#checkout-submit').val('Checkout');
 				}, 5000);
 			}else{
