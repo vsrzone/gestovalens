@@ -684,6 +684,8 @@ function checkIfNumber(e){
 function setCanvasHeight(){
 	if ($(window).width() < 1170) {
 		$('#deisgn-area').css('height', $(window).height());
+	}else{
+		$('#deisgn-area').css('height', '100%');
 	}
 }
 

@@ -32,7 +32,7 @@
 		<a id="logo"><img src="{{ url() }}/images/logo.png" width="100%" height="100%" alt="Gesto Valens" title="Gesto Valens"></a>
 		<li><a class="menu-item" id="top-nav" title="Home"><p class="nav-icon"><i class="fa fa-home fa-lg"></i></p></a></li>
 		<li><a class="menu-item" id="left-nav" title="Contact"><p class="nav-icon" id="contact-page"><i class="fa fa-phone-square fa-lg"></i></p></a></li>
-		<li><a class="menu-item" id="bottom-nav" title="Gallery"><p class="nav-icon" id="nav-facebook"><i class="fa fa-camera-retro fa-lg"></i></p></a></li>
+		<li><a href="https://www.facebook.com/GestoValens/photos_stream" target="_blank" class="menu-item" id="bottom-nav" title="Gallery"><p class="nav-icon" id="nav-facebook"><i class="fa fa-camera-retro fa-lg"></i></p></a></li>
 		<li><a class="menu-item" id="right-nav" title="My Cart"><p class="nav-icon check-out"><i class="fa fa-cart-arrow-down fa-lg"></i></p></a></li>
 	</ul>
 </div>
@@ -79,7 +79,7 @@
 							<div id="gender-selection-menu">
 								<span id="overlay-gender" class="overlay right init-pos">Select Gender</span>
 								<div class="gender-icon" id="male-icon" title="male"></div>
-								<div class="gender-icon" id="female-icon" title="female"></div>
+								<!-- <div class="gender-icon" id="female-icon" title="female"></div> -->
 							</div>	
 							<div id="color-selection-menu">
 								<span id="overlay-type" class="overlay right init-pos">Select Tshirt or Logo</span>
